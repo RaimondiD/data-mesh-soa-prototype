@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/context" name="medical_care_DP.xml" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET">
+        <inSequence>
+            <call>
+                <endpoint key="OPA_medical_DP"/>
+            </call>
+            <property expression="json-eval(accepted)" name="policyDP" scope="default" type="STRING"/>
+            <switch source="get-property(policyDP)">
+                <case regex="true">
+                    <call>
+                        <endpoint key="DP_request_creator"/>
+                    </call>
+                    <call>
+                        <endpoint key="OPA_DB_Adapter"/>
+                    </call>
+                    <property expression="json-eval($.accepted)" name="DBpolocies" scope="default" type="STRING"/>
+                    <switch source="get-property(DPpolicies)">
+                        <case regex="true">
+                            <call>
+                                <endpoint key="DB_adapter"/>
+                            </call>
+                        </case>
+                        <default>
+                            <payloadFactory media-type="text">
+                                <format>&lt;inline/&gt;error, this DP dosen't have enough permission to do this request. contact the DP owner or the governance team for more info.</format>
+                                <args/>
+                            </payloadFactory>
+                            <respond/>
+                        </default>
+                    </switch>
+                </case>
+                <default>
+                    <payloadFactory description="user can't access" media-type="text">
+                        <format>&lt;inline/&gt;user can't access this resource, contact DP product owner for more info&#xd;
+</format>
+                        <args/>
+                    </payloadFactory>
+                    <respond/>
+                </default>
+            </switch>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

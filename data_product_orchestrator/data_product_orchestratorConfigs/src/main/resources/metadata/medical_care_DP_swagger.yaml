@@ -1,0 +1,52 @@
+openapi: 3.0.1
+info:
+  title: medical_care_DP.xml
+  description: API Definition of medical_care_DP
+  version: 1.0.0
+servers:
+- url: /context
+security:
+- default: [
+    ]
+paths:
+  /:
+    get:
+      responses:
+        default:
+          description: Default response
+components:
+  securitySchemes:
+    default:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://test.com
+          scopes: {
+            }
+x-wso2-auth-header: Authorization
+x-wso2-cors:
+  corsConfigurationEnabled: false
+  accessControlAllowOrigins:
+  - '*'
+  accessControlAllowCredentials: false
+  accessControlAllowHeaders:
+  - authorization
+  - Access-Control-Allow-Origin
+  - Content-Type
+  - SOAPAction
+  - apikey
+  - Internal-Key
+  accessControlAllowMethods:
+  - GET
+  - PUT
+  - POST
+  - DELETE
+  - PATCH
+  - OPTIONS
+x-wso2-basePath: /medical_care/1
+x-wso2-transports:
+- http
+- https
+x-wso2-response-cache:
+  enabled: false
+  cacheTimeoutInSeconds: 300
