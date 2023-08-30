@@ -13,8 +13,6 @@ public class RestResources {
     @GET
     @Path("/request")
     public Response info_request(@Context HttpHeaders requestHeader){
-        System.out.println("prova");
-        System.out.print("morte " + requestHeader.getRequestHeaders());
-        return Response.status(Response.Status.OK).entity("prova" + requestHeader.getRequestHeaders()).build();
+        return Response.status(Response.Status.OK).entity(requestHeader.getRequestHeaders()).build();
     }
 }

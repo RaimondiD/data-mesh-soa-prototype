@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="stub_rest_server:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/stub_rest_server_jar</output-path>
+    <root id="archive" name="stub_rest_server.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
