@@ -1,27 +1,40 @@
 package org.example.REST;
 
-import com.google.gson.JsonObject;
+import org.example.PostgreeConnector;
 import org.example.REST.data_class.SQLInsertQuery;
 import org.example.REST.data_class.SQLSelectQuery;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import java.sql.ResultSet;
+
+@Path("/DB")
 public class RestResources {
         @POST
         @Path("/insert")
+        @Consumes({"application/json", "application/xml"})
         @Produces({"application/json", "application/xml"})
         public Response insertQuery(SQLInsertQuery insertInfo) {
-            return Response.status(Response.Status.OK).build();
+            System.out.println("here" + insertInfo);
+            String resultQuery = PostgreeConnector.ExecuteUpdate(insertInfo.generateInsertQuery());
+            return Response.status(Response.Status.OK).entity(resultQuery).build();
 
         }
-        @GET
+        @POST
         @Path("/select")
-        @Produces({"application/json", "application/xml"})
-        public Response selectQuery(@Context SQLSelectQuery selectInfo) {
-            JsonObject sqlJsonRepresentaiton =  new JsonObject();
+        @Consumes({"application/json", "application/xml"})
+        public Response selectQuery(SQLSelectQuery selectInfo) {
+            String resultQuery = PostgreeConnector.ExecuteQuery(selectInfo.generateSelectQuery());
+            System.out.println(resultQuery);
+            return Response.status(Response.Status.OK).entity(resultQuery).build();
 
-        return Response.status(Response.Status.OK).build();
-    }
+        }
+        @POST
+        @Path("/query")
+        @Produces({"applicatoin/json","application/xml"})
+        public Response genericQuery(String query){
+            System.out.println("generic-query");
+            return Response.status(Response.Status.OK).build();
+        }
 
 }

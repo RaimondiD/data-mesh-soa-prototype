@@ -3,6 +3,7 @@ package org.example.REST;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.server.model.Resource;
 
 import java.io.IOException;
 import java.net.URI;
@@ -21,9 +22,6 @@ public class Main {
         server.start();
 
         System.out.println("Server started on: http://"+HOST+":"+PORT); System.out.println("Hit return to stop...");
-        System.in.read();
-        System.out.println("Stopping server");
-        server.shutdownNow();
-        System.out.println("Server stopped");
+        while(true);
     }
 }
