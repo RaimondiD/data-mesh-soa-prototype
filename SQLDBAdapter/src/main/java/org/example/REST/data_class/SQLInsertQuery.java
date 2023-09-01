@@ -1,4 +1,4 @@
-package org.example.data_class;
+package org.example.REST.data_class;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;

@@ -1,15 +1,11 @@
-package org.example;
+package org.example.REST;
 
 import com.google.gson.JsonObject;
-import oracle.ucp.proxy.annotation.Post;
-import org.example.data_class.SQLInsertQuery;
-import org.example.data_class.SQLSelectQuery;
-import org.glassfish.grizzly.http.HttpHeader;
+import org.example.REST.data_class.SQLInsertQuery;
+import org.example.REST.data_class.SQLSelectQuery;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.HttpHeaders;
-import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 public class RestResources {
         @POST
