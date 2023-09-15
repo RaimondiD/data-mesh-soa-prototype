@@ -1,0 +1,7 @@
+{
+    "dp": "medical_care", 
+    "request" : "SELECT", 
+    "query" : {"tablename" : "medicalprescription", 
+               "columns" : ["*"],
+              "conditions" : []}
+}

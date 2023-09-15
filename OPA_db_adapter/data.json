@@ -1,0 +1,6 @@
+{	
+    "dproducts_tables" :  { 
+    	"medical_care" : ["medicalprescription"],
+    	"other_dp" : ["generictable"]
+	}
+}

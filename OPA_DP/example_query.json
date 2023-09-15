@@ -1,0 +1,4 @@
+{"input": {
+    "user" : {"uid" : "Erne", "role" : "DPowner", "id": 1,"action" : "delete", "del_columns" : ["priority"]}
+}
+}
