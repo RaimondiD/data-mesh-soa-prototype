@@ -6,6 +6,7 @@ import org.wso2.carbon.apimgt.common.gateway.exception.JWTGeneratorException;
 import org.wso2.carbon.apimgt.common.gateway.jwtgenerator.APIMgtGatewayJWTGeneratorImpl;
 import org.wso2.carbon.apimgt.common.gateway.jwtgenerator.AbstractAPIMgtGatewayJWTGenerator;
 
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -26,7 +27,10 @@ public class CustomGatewayJWTGenerator extends APIMgtGatewayJWTGeneratorImpl {
         //claims.putAll(jwtInfoDto.getJwtValidationInfo().getClaims());
         //claims.put("prova","value");
         //System.out.println(claims);
+
+        System.out.println(super.jwtConfigurationDto.getTokenIssuerDtoMap().keySet().toString());
         debug_write("enter in popStandardClaims");
+
         return super.populateStandardClaims(jwtInfoDto);
     }
 
