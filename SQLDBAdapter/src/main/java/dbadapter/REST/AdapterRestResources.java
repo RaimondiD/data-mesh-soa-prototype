@@ -1,12 +1,11 @@
-package org.example.REST;
+package dbadapter.REST;
 
-import org.example.PostgreeConnector;
-import org.example.REST.data_class.SQLInsertQuery;
-import org.example.REST.data_class.SQLSelectQuery;
+import dbadapter.REST.data_class.SQLInsertQuery;
+import dbadapter.PostgreeConnector;
+import dbadapter.REST.data_class.SQLSelectQuery;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import java.sql.ResultSet;
 
 @Path("/DB")
 public class RestResources {

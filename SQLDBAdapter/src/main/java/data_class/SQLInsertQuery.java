@@ -1,4 +1,4 @@
-package org.example.REST.data_class;
+package dbadapter.REST.data_class;
 
 import javax.swing.text.html.Option;
 import javax.xml.bind.annotation.XmlRootElement;
