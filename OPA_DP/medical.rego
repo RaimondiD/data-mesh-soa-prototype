@@ -27,19 +27,19 @@ cf_check(user) := true if{
 
 
 allow := true if{ 
-    data.allowed_roles[_] == input.user.role
-    input.user.action == data.role_permission[input.user.role][_]   # the action of the user is a action valid for that role
+    data.allowed_roles[_] == input.user.profession
+    input.user.action == data.role_permission[input.user.profession][_]   # the action of the user is a action valid for that role
     action_read(input.user)                                           
     cf_check(input.user)
 }{
-   	data.allowed_roles[_] == input.user.role
-    input.user.action == data.role_permission[input.user.role][_]   
+   	data.allowed_roles[_] == input.user.profession
+    input.user.action == data.role_permission[input.user.profession][_]   
     input.user.action == "delete"	
 }
 
 action_delete if input.user.action == "delete"
-query_columns := roles_columns(input.user.role) if action_read(input.user)
-query_conditions := roles_conditions(input.user.role) if action_read(input.user)
+query_columns := roles_columns(input.user.profession) if action_read(input.user)
+query_conditions := roles_conditions(input.user.profession) if action_read(input.user)
 delete_columns = input.user.del_columns if {
 	action_delete
     input.user.del_columns != data.key_column

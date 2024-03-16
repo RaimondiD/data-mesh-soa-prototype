@@ -20,19 +20,20 @@ public class ServiceAPI {
             String opa_request = OrchestratorMethods.get_opa_request(cdc, requestHeader);
             System.out.println(opa_request);
             String opa_response_string = OrchestratorMethods.get_opa_response(opa_request);
+            System.out.println(opa_response_string);
             OpaReadResult opa_response_object = OrchestratorMethods.authorized_opa(opa_response_string);
-            if(!opa_response_object.isAllow()){
+            if(!opa_response_object.isAllow() || opa_response_object.generateSQLSelectQuery().getColumns() == null){
                 return Response.status(Response.Status.OK).entity(Entity.text("the user dosen't have permission to " +
                         "get this resource")).build();
             }
             String sql_request = OrchestratorMethods.get_db_request(opa_response_object);
+            System.out.println(sql_request);
             String opa_db_result = OrchestratorMethods.contactDBOpa(sql_request);
 
             //create_query();
             //String db_response = readFromDb();
             //return Response.status(Response.Status.OK).entity(Entity.json(db_response)).build();
             String db_response = OrchestratorMethods.getDbResponse(opa_db_result);
-            System.out.println("here");
             System.out.println(db_response);
 
             return Response.status(Response.Status.OK).entity(Entity.json(db_response)).build();

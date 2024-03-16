@@ -132,7 +132,8 @@ enable = true
 generator_impl = "org.wso2.carbon.test.CustomTokenGenerator"
 #claim_dialect = "http://wso2.org/claims"
 #convert_dialect = false
-#header = "X-JWT-Assertion"
+#prova  
+header = "X-JWT-Assertion"
 #signing_algorithm = "SHA256withRSA"
 enable_user_claims = true
 claims_extractor_impl="org.wso2.carbon.test.CustomGatewayJWTGenerator"

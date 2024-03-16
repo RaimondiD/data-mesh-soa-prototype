@@ -7,6 +7,8 @@ import data_class.SQLSelectQuery;
 
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.MultivaluedHashMap;
+import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import java.util.Map;
 
@@ -14,8 +16,9 @@ public class OrchestratorMethods {
 
     public static String DPNAME = "medical_care";
     static String repositoryRootPath = "C:/Users/DavideRaimondi/Desktop/repo_git/data-mesh-soa-use-case/";
+    static String USERINFOPARAMSNAME = "user_jwt";
 
-    static String userInfoSpecificPath = "/info/request";
+    static String userInfoSpecificPath = "/info/user";
     static String userInfoCredentialfPath = "MedicalCareDP/src/main/resources/restStub.txt";
 
     static String opaDpCredentialPath = "MedicalCareDP/src/main/resources/opaDP.txt";
@@ -32,9 +35,12 @@ public class OrchestratorMethods {
 
 
     public static String get_opa_request(String cdc, HttpHeaders headerRequest){
-        System.out.println(headerRequest.getHeaderString("X-JWT-Assertion")); //TODO check JWT header and solve jwt user problem
+        String user_info = headerRequest.getHeaderString("X-JWT-Assertion"); //cdc
         ApiDescriptor userInfoApi = new ApiDescriptor(repositoryRootPath + userInfoCredentialfPath);
-        Response response = userInfoApi.get( userInfoSpecificPath);
+        MultivaluedMap<String,Object> header = new MultivaluedHashMap<>();
+        header.add(USERINFOPARAMSNAME,user_info);
+        Response response = userInfoApi.get( userInfoSpecificPath,header);
+        System.out.println(response);
         return response.readEntity(Map.class).get("entity").toString();
     }
 
