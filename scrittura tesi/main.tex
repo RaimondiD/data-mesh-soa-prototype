@@ -1,5 +1,5 @@
 \documentclass[12pt]{report}
-
+\usepackage{float}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{setspace}
 \usepackage{geometry}
@@ -446,7 +446,7 @@ I requisiti di un servizio possono infatti dipendere dai consumatori; si propone
 Un esempio di questo approccio è la classificazione di servizi in servizi pubblici e  servizi interni all'enterprise.
 
 \chapter{Architettura software}\label{architetturaLogica}
-In questo capitolo viene spiegato come è stata costruita l'architettura, il razione dietro alle scelte e le caratteristiche del sistema risultante. 
+In questo capitolo viene spiegato come è stata costruita l'architettura, il razione dietro alle scelte e le caratteristiche del sistema proposto. 
 Nel primo paragrafo verranno approfondite le motivazioni che hanno portato alla realizzare di questa architettura software.
 In seguito si procederà con un analisi degli agenti, le entità che dovranno interagire con il sistema che si propone di realizzare.
 Dagli agenti verranno ricavati gli use-case, le operazioni che gli agenti vorrebbero poter effettuare per soddisfare i propri bisogni.
@@ -464,7 +464,7 @@ Nell'articolo, si argomenta poi che contrariamente ad altri tipi di architetture
 Seguendo questa linea di pensiero, gli unici elementi immutabili del sistema sono quelli definiti dall'architettura.
 Si può quindi affermare che rimuovere l'architettura rimuove la presenza di elementi immutabili in fase di progettazione e quindi riduce la complessità del sistema.
 Prendendo spunto da questa osservazione, si vuole proporre un'architettura utilizzabile come strumento per facilitare il cambiamento, non per renderlo più complesso. 
-In \cite{designChoiche}, viene individuato come problema principale per l'evoluzione di un'architettura la così detta ``knowledge vaporization'', intesa come la mancanza di documentazione dei motivi che hanno portato ad una specifica modifica al sistema. %%todo: mostro ad altea
+In \cite{designChoiche}, viene individuato come problema principale per l'evoluzione di un'architettura la così detta ``knowledge vaporization'', intesa come la mancanza della documentazione dei motivi che hanno portato ad una specifica modifica del sistema. 
 Questo può portare a non rispettare una scelta compiuta in precedenza. 
 La mancanza di documentazione infatti, può portare ad ignorare la scelta presa in passato, o a considerarla sbagliata perché se ne ignorano i motivi.  
 L'altra possibilità, è che sempre a causa della mancata comprensione delle motivazioni dietro a scelte passate, queste vengano ritenute giuste, anche nel caso in cui sia cambiato il contesto che le ha determinate.
@@ -473,7 +473,7 @@ Un sistema non pienamente compreso può quindi perdere la sua integrità struttu
 Si ritiene quindi che sia necessaria un'architettura, vista non come una guida alla realizzazione del sistema, ma come una proposta pensata per essere modificata. 
 L'architettura dovrebbe documentare le proprietà che il sistema dovrebbe garantire, i motivi per cui sono ritenute importanti e i vincoli che si ritengono necessari per garantirle.
 Dal punto di vista dell'architettura quindi l'obbiettivo della tesi è creare una proposta che non ha la presunzione di risolvere un problema, ma che cerca di porre le basi a livello accademico per un dialogo sul tema. 
-Fornire un razionale ben documentato quindi dovrebbe permettere di discutere un'architettura e di capire, al modificarsi dei requisiti, del contesto o della comprensione del problema, in che modo sia necessario cambiarla.
+Fornire un razionale ben documentato dovrebbe permettere di discutere un'architettura e di capire, al modificarsi dei requisiti, del contesto o della comprensione del problema, in che modo sia necessario cambiarla.
 Si considera quindi l'architettura come uno strumento dinamico da mettere continuamente in discussione, e che permetta agli sviluppatori di orientarsi su cosa andrebbe e non andrebbe fatto, ma soprattutto sulle motivazioni dietro alle scelte.
 L'architettura proposta viene creata pensando ad un'azienda enterprise che vuole provare ad applicare i principi del Data Mesh.
 Si è scelto di lavorare sul Data Mesh perché pur essendo un trend largamente adottato nelle aziende enterprise, viene spesso utilizzato come buzzword; inoltre scarseggiano i lavori sul tema in ambito accademico \cite{goedegebuure2023data}.
@@ -803,7 +803,7 @@ Diventa quindi possibile, memorizzando questo tipo di informazione,tracciare i c
 Le informazioni sui Bitemporal data possono essere memorizzate anche in forma di log, senza dover cambiare la struttura delle tabelle che li conservano.
 Una volta che la piattaforma fornisce gli adapter per uno o più database analitici ogni Data Product può scegliere con quale integrarsi, in base alle preferenze sul formato di rappresentazione del dato.
 Infine, visto che i dati di Data product diversi verranno salvati nello stesso database analitico, è opportuno che l'adapter fornisca il giusto supporto per controllare gli accessi ai dati e che mantenga i dati dei diversi Data Product separati.
-Viene prevista anche la creazione di un adapter per un'altro tipo di database.
+Viene prevista anche la creazione di un adapter per un altro tipo di database.
 I Data Product alla fonte, gestiti da team operazionali devono infatti interagire con un database operazionale.
 Il processo di ETL infatti, che di norma estrae dati da uno o più Data Product, dovrà effettuare le richieste al database  utilizzato per supportare le operazioni di business nel caso di Data Product orientati alla fonte.
 Le modalità per la richiesta dei dati e per l'aggiornamento non prevedono quindi l'interazione con un altro Data Product e dunque saranno differenti.
@@ -876,7 +876,7 @@ Quando un utente utilizza il metodo per accedere ai dati analitici del Data Prod
 Sulla base dei permessi e delle richieste dell'utente bisognerà effettuare una richiesta di lettura ad un database analitico.
 Dato che queste sono preoccupazioni comuni a tutti i Data Product viene proposto un servizio con queste responsabilità.
 \subsubsection{Gestore dell'accesso ai dati analitici}
-Si introduce un'altro servizio semplicemente per il principio di divisone delle responsabilità; le funzionalità proposte potrebbero essere integrate direttamente nel mediatore del Data Product. 
+Si introduce un altro servizio semplicemente per il principio di divisone delle responsabilità; le funzionalità proposte potrebbero essere integrate direttamente nel mediatore del Data Product. 
 Questo servizio, che chiameremo gestore dell'accesso ai dati analitici, deve conciliare le richieste effettuate dall'utente con i vincoli fissati dalle politiche globali e locali.
 Si ricorda che con politiche locali si intendono una serie di regole specifiche del dominio redatte dal team che lavora sul  Data Product, per limitare l'accesso al dato.
 Con politiche globali invece si intendono le regole imposte centralmente dal team di governance e valide per ogni Data Product.
@@ -899,103 +899,103 @@ Il punto di accesso a questo servizio verrà invece fornito al mediatore, che si
 \subsubsection{Gestore delle politiche}
 Si approfondiscono ora le specifiche del gestore delle politiche.
 Come già precisato le responsabilità del gestore delle politiche sono la valutazione e l'applicazione delle politiche globali e locali.
-Per poter utilizzare un'unica componente per la valutazione delle politiche nell'enterprise è richiesto per definirle l'utilizzo di un'unico linguaggio. 
+Per poter utilizzare un'unica componente per la valutazione delle politiche nell'enterprise è richiesto per definirle l'utilizzo di un unico linguaggio. 
 Il linguaggio deve permettere la valutazione e l'applicazione automatica delle politiche dichiarate.
 Le politiche locali metteranno in relazione le informazioni dell'utente con le informazioni a cui può accedere.
 Le politiche globali definite dal team di governance faranno lo stesso, ma saranno valide sulle richieste di accesso a tutti i Data Product.
 Per rendere effettive le politiche globali oltre al linguaggio comune è necessario che la rappresentazione delle informazioni sulla quale si vogliono stabilire politiche globali sia resa uniforme in ogni Data Product.
 Si ponga per esempio che si voglia che gli utenti con il ruolo \textit{cliente} possano accedere soltanto alle informazioni associate al proprio codice fiscale.
 Viene definita una politica globale che limita l'accesso agli utenti di tipo \textit{cliente} ai campi con associato un \textit{codice\_fiscale} uguale a quello del \textit{cliente}.
-Per poter applicare la politiche ogni Data Product dovrà mantenere il codice fiscale utilizzando un campo \textit{codice\_fiscale}, o mantenere una procedura che associ  a \textit{codice\_fiscale} un'informazione analoga mantenuta dal Data Product.
+Per poter applicare la politiche ogni Data Product dovrà mantenere il codice fiscale utilizzando un campo \textit{codice\_fiscale}, o mantenere una procedura che associ  a \textit{codice\_fiscale} un'informazione analoga.
 Richiedere uniformità in un contesto come quelle del Data Mesh è un'operazione complicata, che può portare ad erosione e deriva ma consente al team di governance di esercitare controllo su tutti i Data Product.
 Sarà quindi necessario equilibrare il controllo esercitato dal team centrale con le richieste di standardizzazione del dato e con la definizione di politiche globali con la necessità di autonomia dei team operazionali e analitici.
 Si propone che le politiche locali siano scritte in un artefatto mantenuto dal Data Product. 
 Nella scrittura delle policy locali si dovrà tenere conto dello schema con cui i dati sono effettivamente salvati.
 Infatti il gestore dell'accesso ai dati analitici utilizzerà le informazioni fornite dal gestore delle policy per effettuare le richieste ai database analitici.
 Le politiche globali saranno invece mantenute centralmente dal team di governance.
-Il servizio di gestione delle politiche utilizzerà per ogni Data Product l'artefatto interno al Data Product e quello centralizzato del team di governance per valutare le richieste di accesso ai dati.
+Il servizio di gestione delle politiche utilizzerà per ogni Data Product l'artefatto interno al Data Product e quello fornito del team di governance per valutare le richieste di accesso ai dati.
 Il servizio è responsabile di essere responsivo ad eventuali cambiamenti negli artefatti.
 Il team di governance potrà intervenire sulle politiche locali contattando direttamente il servizio di gestione delle politiche tramite il metodo fornito dal mediatore. 
 Il metodo dovrebbe permettere al team di governance di modificare le politiche locali, questo può essere garantito consentendo per esempio la modifica dell'artefatto contente le politiche locali. 
-È possibile separare ulteriormente il servizio di gestione delle politiche in due servizi distinti, uno che si occupi di valutare le politiche e uno che si occupi della gestione degli artefatti.
-L'introduzione di queste componenti permette al team responsabile di un Data Product di concentrarsi unicamente sulla stesura delle politiche locali, automatizzando il resto del procedimento.
+È possibile separare ulteriormente il servizio di gestione delle politiche in due servizi distinti, uno che si occupi della valutazione delle politiche e uno che si occupi della gestione degli artefatti.
+L'introduzione di queste componenti permette al team responsabile di un Data Product di concentrarsi unicamente sulla stesura delle politiche locali, rendendo automatico il resto della procedura.
 
 \subsection{Servizio di autenticazione}
-Per garantire il rispetto delle politiche di riservatezza si forniscono agli utenti solo una frazione dei dati conservati nel Data Product.
+Per consentire il rispetto delle politiche di riservatezza si forniscono agli utenti solo una frazione dei dati conservati nel Data Product.
 Per garantire che questo avvenga è necessario che il mediatore del Data Product verifichi l'identità dell'utente che effettua la richiesta.
 Si propone quindi l'introduzione di un servizio di autenticazione, fornito dalla Self-Serve Data Platform.
-Il servizio di autenticazione potrà essere utilizzato  anche dagli adapter dei database per avere una garanzia sulla provenienza delle richieste.
-Infine potrebbe essere utilizzato anche come misura di sicurezza per assicurarsi che i servizi interni al Data Product vengano contattati unicamente dal mediatore.
+Il servizio di autenticazione potrà essere utilizzato anche dagli adapter dei database per controllare la provenienza delle richieste.
+Infine potrebbe essere utilizzato anche come misura di sicurezza, per assicurarsi che i servizi interni al Data Product vengano contattati unicamente dal mediatore.
 Il servizio di autenticazione deve essere centralizzato per evitare conflitti o incoerenze derivanti dalla gestione delle informazioni di uno stesso utente in punti diversi.
-Inoltre la presenza di un sistema centralizzato facilita il controllo da parte del team di governance.
-Il team di governance dovrà progettare il servizio di autenticazione in modo per ogni utente siano mantenute le informazioni necessarie per la valutazione delle politiche di accesso ai dati.
+Inoltre, la presenza di un sistema centralizzato facilita il controllo da parte del team di governance.
+Quest'ultimo dovrà progettare il servizio di autenticazione in modo che, per ogni utente, siano mantenute le informazioni necessarie per la valutazione delle politiche di accesso ai dati.
 
 \subsection{Supporto all'accesso dei meta-dati del Data Product}
-Una delle esigenze nelle architetture orientate ai servizi è la possibilità di ottenere le informazioni necessarie per contattare un servizio specifico.
-La soluzione tradizionale al problema prevede l'introduzione di un registro dei servizi. 
-Si tratta di una componente centralizzata che mantiene e fornisce su richiesta informazioni e modalità per l'accesso ai servizi dell'architettura.
-L'esempio più famoso è probabilmente UDDI,  progettato per fornire i WSDL di diversi web services \cite{curbera2002unraveling}.
-A questa esigenza si affianca la necessità di facilitare ricerca del dato svolta dai data scientist.
-Si propone di creare quindi un servizio che mantenga tutte le informazioni necessarie per contattare i Data Product e comprendere i dati che forniscono.
-Il servizio, che chiameremo registro dei Data Produce sarà utilizzabile dall'utente per cercare i dati all'interno dell'organizzazione. 
-Le informazioni mostrate dal registro dovrebbero essere mantenute dai Data Product, per garantire al team che ci lavora il pieno controllo sui dati.
-Il team di governance può se lo ritiene opportuno fissare alcune metriche, che si richiede i Data Product forniscano al fine di facilitare la valutazione di un eventuale adozione.
-Alcune di queste metriche potrebbero essere la freschezza dei dati, la frequenza di aggiornamento, la presenza di dati sensibili ed informazioni sulla provenienza del dato.
+Nelle SOA può diventare complicato ottenere le informazioni necessarie per contattare i vari servizi.
+La soluzione tradizionale al problema prevede l'introduzione di un registro che mantenga queste informazioni. 
+Si tratta di una componente centralizzata, che conserva e fornisce su richiesta informazioni e modalità per l'accesso ai servizi dell'architettura.
+L'esempio più famoso è probabilmente UDDI, progettato per fornire i WSDL di diversi Web Service \cite{curbera2002unraveling}.
+A questa esigenza si affianca la necessità di facilitare  la ricerca dei dati, svolta dai data scientist.
+Si propone di creare quindi un servizio che mantenga tutte le informazioni necessarie per contattare i Data Product e al contempo che permetta di capire cosa venga offerto da questi.
+Il servizio, che verrà chiamato registro dei Data Product, sarà utilizzabile dall'utente per cercare i dati all'interno dell'organizzazione. 
+Le informazioni mostrate dal registro dovrebbero essere mantenute dai Data Product, per garantire che team che ci lavora mantenga il pieno controllo sui dati.
+Il team di governance può, nel caso lo ritenga opportuno, fissare alcune metriche che dovranno essere fornite da tutti i Data Product al fine di facilitare la valutazione.
+Alcune di queste metriche potrebbero essere la freschezza dei dati, la frequenza di aggiornamento, la presenza di dati sensibili e le informazioni sulla provenienza del dato.
 Il team responsabile del Data Product deve assicurarsi di utilizzare tecniche di differential privacy o simili nel caso i meta-dati possano far trasparire informazioni sensibili.
-Un requisito opzionale per l'architettura è fornire degli strumenti per l'applicazione di queste tecniche, nel caso si ritengano necessarie in diversi Data Product
-Per mantenere il pieno controllo sul dato si propone che durante la consultazione de registro questo contatti la porta di accesso ai meta-dati del Data Product.
-Al fine di ottimizzare l'operazione è possibile utilizzare in alternativa un sistema di notifiche, che permetta al registro di essere informato di eventuali cambiamenti nei meta-dati dei Data Product.
-In questo caso il registro manterrà una copia dei meta-dati dei Data Product, ed effettuerà la richiesta di accesso ai meta-dati solo nel caso gli venga notificato un aggiornamento.
+Un requisito opzionale per l'architettura è fornire degli strumenti per l'applicazione automatica di queste tecniche, nel caso si ritengano necessarie in diversi Data Product
+Per mantenere il pieno controllo sul dato si propone che durante la consultazione del registro questo contatti la porta di accesso ai meta-dati del Data Product.
+Al fine di ottimizzare la consultazione è possibile salvare le informazioni nel registro, ed utilizzare un sistema di notifiche che permetta a quest'ultimo di essere informato di eventuali cambiamenti nei meta-dati dei Data Product.
+In questo caso il registro manterrà una copia dei meta-dati ed effettuerà la richiesta di accesso solo nel caso gli venga notificato un aggiornamento.
 Nello scenario più semplice il Data Product mantiene solamente un artefatto contente le informazioni necessarie per contattarlo ed i meta-dati.
 Ogni volta che un utente cerca informazioni su un Data Product il registro le ottiene contattando il mediatore, e si occupa della presentazione all'utente.
-Si richiede nel caso si preveda una grossa quantità di Data Product di progettare il registro per facilitarne la ricerca, integrando per esempio meccanismi di ranking e ricerca semantica.
-Il registro dei Data Product potrebbe essere utilizzato anche raccogliere metriche sull'utilizzo e sulla soddisfazione dei clienti di un Data Product.
+Nel caso si preveda una grossa quantità di Data Product, il registro andrebbe progettato per facilitarne la ricerca, integrando per esempio meccanismi di ranking e ricerca semantica.
+Il registro dei Data Product potrebbe essere utilizzato anche per raccogliere metriche sull'utilizzo e sulla soddisfazione dei clienti di uno specifico dato.
 Questo permetterebbe di fornire un feedback al Data Product Owner e al team di governance sull'andamento di un Data Product.
 
-\subsection{Servizio di trasformazione ed aggregamento dei dati}
+\subsection{Servizio di trasformazione ed aggregazione dei dati}
 L'ultimo elemento necessario per soddisfare i requisiti richiesti dall'architettura è un servizio che effettui aggregazioni e trasformazioni sui dati.
-Dopo che il gestore degli aggiornamenti ha ottenuto dati dalle fonti è necessario che questi vengano aggiunti ai database analitici.
-Questa operazione può richiedere la gestione di diversi problemi.
-La rappresentazione dei dati ricevuti potrebbe essere diversa da quella che si vuole mantenere nel database analitico; inoltre anche i dati ricevuti provenienti da fonti diverse potrebbero essere rappresentati in modi diversi.
-I dati provenienti da fonti diverse potrebbero essere aggiornati con frequenze differenti, questo rende difficile aggregarli, soprattutto se il criterio di aggregazione scelto  è di tipo temporale.
+Dopo che il gestore degli aggiornamenti ha ottenuto dati dalle fonti è necessario che questi vengano salvati nei database analitici.
+Questa operazione può diventare piuttosto complessa.
+La rappresentazione dei dati ricevuti potrebbe essere diversa da quella che si vuole mantenere nel database analitico; inoltre anche i dati ricevuti provenienti da fonti diverse potrebbero essere rappresentati diversamente.
+I dati provenienti da fonti diverse potrebbero essere aggiornati con frequenze differenti, e questo rende difficile la loro aggregazione, soprattutto se il criterio scelto per l'aggregazione è di tipo temporale.
 Infine alcuni dati ricevuti potrebbero essere considerati non rilevanti per gli scopi del Data Product, e di conseguenza dovranno essere rimossi.
-Il team con la responsabilità di realizzare il Data Product ha la responsabilità di decidere e codificare i criteri di aggregazione e trasformazione dei dati.
-Si propone che la piattaforma fornisca un servizio di aggregazione e trasformazione dei dati con l'obbiettivo di facilitare la codifica e l'esecuzione delle trasformazioni richieste.
+Il team con la responsabilità di realizzare il Data Product dovrà decidere e codificare i criteri per l'aggregazione e la trasformazione dei dati.
+Si propone che la piattaforma fornisca un servizio che supporti queste operazioni, con l'obbiettivo di facilitare la codifica e l'esecuzione delle trasformazioni richieste.
 In particolare, il servizio dovrà garantire una flessibilità sufficiente per permettere al team di effettuare operazioni specifiche rispetto al dato conservato.
 Inoltre dovrà integrarsi correttamente con il servizio di aggiornamento, che fornirà i dati grezzi, e con l'interfaccia esposta dagli adapter dei database analitici, che salveranno le informazioni processate.
 La suddivisione in servizi proposta è solo una delle possibili. 
-Un'altra possibile suddivisione prevede un unico servizio con le responsabilità del gestore degli aggiornamenti e della  trasformazione e aggregazione del dato, e che sia quindi responsabile dell'intero processo di ETL.
-Si è mantenuto questo servizio come ultimo tra quelli forniti dall'architettura in quanto si ritiene che questa sia l'operazione più difficile da generalizzare.
+Un'altra possibilità potrebbe prevedere un unico servizio con le responsabilità del gestore degli aggiornamenti e della  trasformazione e aggregazione del dato, e che si occupi quindi di effettuare l'intero processo di ETL.
+Si è mantenuto questo servizio come ultimo tra quelli non opzionali forniti dall'architettura in quanto si ritiene che questa sia l'operazione più difficile da generalizzare.
 Infatti le operazioni di trasformazione e di aggregazione del dato sono specifiche del dominio e potrebbero variare molto nei diversi Data Product.
 Nella pratica quello che probabilmente garantirà la piattaforma è l'adozione di una tecnologia pensata per effettuare ETL, fornendo un supporto per alcune operazioni e l'integrazione con le altre componenti.
-Questo avrà un impatto marginale sul team associato al Data Product, che avrà comunque il compito di imparare ad utilizzare la tecnologia specifica e definire utilizzandola le trasformazioni necessarie.
+Questo avrà un impatto marginale sul team associato al Data Product, che avrà comunque il compito di imparare ad utilizzare la tecnologia specifica e utilizzarla per definire le trasformazioni necessarie.
 
 \subsection{Enterprise Service Bus}
 Si propone come componente opzionale l'adozione di un Enterprise Service Bus.
 Nell'architettura proposta non viene gestita la possibilità di modificare l'indirizzo del mediatore di un Data Product o di replicare in maniera trasparente le istanze di alcuni servizi.
-Inoltre non viene specificato un meccanismo di sicurezza e/o di autenticazione che non preveda l'integrazione esplicita delle parti con il servizio di autenticazione.
-Si propone quindi come componente opzionale di adottare un ESB per facilitare la comunicazione tra le componenti dell'architettura.
+Inoltre non viene proposto un meccanismo di sicurezza e/o di autenticazione che non preveda l'integrazione esplicita delle parti con il servizio di autenticazione.
+Si propone quindi come componente opzionale l'adozione di un ESB per facilitare la comunicazione tra le componenti dell'architettura.
 Questo porterà allo spostamento di alcune responsabilità dal mediatore alla nuova componente.
 L'ESB si occuperà di instradare le richieste ai servizi corretti, di gestire l'autenticazione dietro ad ogni richiesta e  eventualmente di raccogliere metriche sull'utilizzo dei vari servizi.
 L'ESB potrebbe anche essere usato per effettuare controlli sui parametri delle richieste.
 Come già accennato potrebbe permettere anche la replicazione e la modifica degli indirizzi fisici, che coinvolgerebbe solo l'ESB e non tutti gli utilizzatori.
 La differenza principale fra l'utilizzo del mediatore rispetto all'ESB, è che mentre il mediatore gestisce unicamente l'accesso al Data Product, l'ESB può essere utilizzato per facilitare la comunicazione tra tutti i servizi previsti dall'architettura.
+
 \subsection{Servizio per la creazione di un Data Product}
-Come ultimo servizio si propone infine un servizio che permetta di creare un Data Product.
+Come ultimo servizio opzionale si propone un servizio che permetta la creazione automatica di un Data Product.
 Fino ad ora sono stati individuati i componenti mostrati nella figura \ref{fig:architettura completa}.
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{immagini/disegno completo architettura 2024-03-12 18.03.16.excalidraw.png}
     \caption{Vista completa sulle componenti proposte}
     \label{fig:architettura completa}
 \end{figure}
 
-
 Arrivati a questo stadio dell'architettura è possibile gestire il Data Product lavorando con gli artefatti di cui dispone.
 Ogni artefatto viene passato ad un servizio specifico fornito dalla piattaforma per specificare le informazioni relative al domino e gli end-point degli altri servizi con cui deve interagire.
-Si propone, per concludere l'architettura di creare una componente che data una versione ridotta degli artefatti crei un Data Product.
-Dato che ogni Data Product presenterà le stesse componenti e che sarà la componente stessa a creare le istanze dei servizi non è necessario che gli artefatti includano le informazioni sugli end-point.
-La responsabilità di quest'ultima componente sarà quindi, dati gli artefatti creare il Data Product, assicurarsi che questo sia integrato con l'ESB e che i suoi metadati siano mostrati nel registro.
+Si propone, per concludere l'architettura di creare una componente che data una versione ridotta degli artefatti vada ad istanziare i servizi necessari per creare un Data Product.
+Dato che ogni Data Product presenterà le stesse componenti e che sarà il servizio di creazione a creare le istanze degli altri servizi avrà la responsabilità di inserire negli artefatti le informazioni per l'integrazione.
+La responsabilità di quest'ultima componente sarà quindi, dati gli artefatti creare il Data Product, assicurarsi eventualmente che questo sia integrato con l'ESB e che i suoi metadati siano mostrati nel registro.
 
 \section{Osservazioni sull'architettura proposta}
 Nella figura \ref{fig:architettura completa} viene proposta una vista completa dell'architettura.
@@ -1003,7 +1003,7 @@ Nella rappresentazione si è cercato di mettere in risalto la divisione in compo
 Si è cercato di definire l'architettura con la minore quantità possibile di vincoli, rimanendo comunque fedeli ai requisiti individuati.
 Durante la fase di analisi dei principi del Data Mesh si è giunti alla conclusione che per renderli davvero applicabili è necessario che lo sforzo per la creazione del Data Product sia minimo.
 Quest'idea ha guidato tutto il processo di progettazione dell'architettura.
-L'architettura cerca quindi di decentralizzare la responsabilità sui dati, centralizzando però lo sforzo tecnico, in quanto i team operazionali e analitici presentano anche altri obbiettivi.
+Si è cercato quindi di decentralizzare la responsabilità sui dati, centralizzando però lo sforzo tecnico, in quanto i team operazionali e analitici presentano anche altri obbiettivi, ortogonali rispetto alla creazione del Data Product.
 Questo approccio limita in parte l'autonomia dei team, ma permette di garantire un livello di controllo e di standardizzazione che altrimenti sarebbe difficile da ottenere.
 Il risultato finale prevede che i team forniscano le seguenti informazioni:
 \begin{itemize}
@@ -1014,17 +1014,12 @@ Il risultato finale prevede che i team forniscano le seguenti informazioni:
     \item le operazioni di trasformazione e aggregazione da applicare ai dati ricevuti dalle fonti.
 \end{itemize}
 Le responsabilità dei team sono sulla manutenzione e l'aggiornamento di queste informazioni, la realizzazione della Data Mesh viene invece delegata alla piattaforma.
-Si ritiene quindi che la proposta sia in linea con il principio di Domain Ownership, in quanto i team hanno in ultimo la responsabilità del dato analitico.
-Il registro, l'ESB, la presenza di componenti standard e la gestione interna degli artefatti, facilitano la fruizione e l'autonomia, permettendo la creazione di un Data Product.
+Si ritiene quindi che la proposta sia in linea con il principio di Domain Ownership, in quanto i team hanno la responsabilità  e il controllo sul dato analitico.
+Il registro, l'ESB, la presenza di componenti standard e la gestione interna degli artefatti facilitano la fruizione e l'autonomia, permettendo la creazione di un Data Product.
 La possibilità di definire policy globali, l'accesso alle policy locali e la standardizzazione garantita dall'utilizzo delle stesso componenti all'interno dell'architettura permette di soddisfare, dal punto di vista tecnico, il principio di Federated Computational Governance.
 Infine la presenza di un'architettura per la gestione delle operazioni tecniche condivise dai domini permette di soddisfare il principio di Self-Serve Data Platform.
 Nel prossimo capitolo verrà mostrato un esempio su come realizzare parte dell'architettura proposta, tramite l'implementazione e l'individuazione di tecnologie per la realizzazione di alcune delle componenti proposte.
 
-
-
-
-\section{Scelta delle tecnologie}
-\section{Viste dell'architettura}
 \chapter{Implementazione}
 \section{Obbiettivo del lavoro}
 \section{Scelta delle tecnologie}
