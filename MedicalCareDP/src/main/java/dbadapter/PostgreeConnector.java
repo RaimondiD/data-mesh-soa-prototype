@@ -31,7 +31,8 @@ public class PostgreeConnector {
             password = reader.nextLine();
 
             try {
-                connection = DriverManager.getConnection(url, user, password);                break;
+                connection = DriverManager.getConnection(url, user, password);
+                break;
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
                 System.out.println("error, re-insert username and password ");

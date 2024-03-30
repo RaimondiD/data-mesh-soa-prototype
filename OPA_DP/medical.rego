@@ -17,24 +17,11 @@ roles_conditions(x) := condition_data[x] if {
 }
 action_read(user):= true if user.action == "read"
 
-cf_check(user) := true if{
-    user.role != "medic"
-    user.role != "patient"
-}{
-    user.cf
-}
-
 
 
 allow := true if{ 
     data.allowed_roles[_] == input.user.profession
     input.user.action == data.role_permission[input.user.profession][_]   # the action of the user is a action valid for that role
-    action_read(input.user)                                           
-    cf_check(input.user)
-}{
-   	data.allowed_roles[_] == input.user.profession
-    input.user.action == data.role_permission[input.user.profession][_]   
-    input.user.action == "delete"	
 }
 
 action_delete if input.user.action == "delete"
@@ -47,5 +34,5 @@ delete_columns = input.user.del_columns if {
     
     }
 delete_keys := input.user.del_cf if input.user.del_cf
-cdc := true if input.user.cdc
-user_id := input.user.user_id
+table := "medicalCare"
+

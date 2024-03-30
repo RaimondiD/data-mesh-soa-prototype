@@ -1,0 +1,5 @@
+titolo : Studio e progettazione di un'architettura orientata ai servizi per la creazione di una Data Mesh
+
+Durante il lavoro di tesi, dopo uno studio della letteratura sull'argomento, si è cercato di progettare un'architettura software, che aderisca allo stile delle architetture orientate ai servizi, col fine di applicare i principi del Data Mesh e che garantisca interoperabilità e riuso.
+In seguito, si è deciso di implementare alcune delle componenti progettate, in modo da portare un esempio di realizzazione conforme con quanto stabilito.
+

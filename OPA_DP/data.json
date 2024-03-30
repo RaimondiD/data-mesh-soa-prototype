@@ -1,8 +1,7 @@
 {
     "allowed_roles" : ["data scientist", "patient", "guarantor", "medic",	"DPowner"],
     "key_column" : "prescription_code",
-    "db_columns" : [" prescription_code", "cf", "telephone_number ", "priority", "medic_cf ", "description", "medical_service_code",
-					"date_of_creation" , "date_of_insertion"],
+    "db_columns" : [" prescription_code", "cf", "telephone_number ", "priority", "medic_cf ", "description", "medical_service_code", "date_of_creation" , "date_of_insertion"],
     "impersonal_columns" : ["prescription_code", "priority", "medical_service_code", "date_of_creation", "date_of_insertion"],
     "granted_format" : ["sql"],
      "role_permission" : {

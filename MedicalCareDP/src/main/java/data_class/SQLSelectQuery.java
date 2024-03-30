@@ -102,13 +102,14 @@ public class SQLSelectQuery {
         return reduceListStrings(columns,",").orElse(columns.get(0));
     }
     private String formatConditions(){
-        ArrayList<String> conditions_copy = new ArrayList<>(conditions); //avoide side effects
+        ArrayList<String> conditions_copy = new ArrayList<>(conditions); //avoid side effects
         if(lastRead != null){
             conditions_copy.add("date_of_insertion > "+ lastRead );
         }
         if (conditions_copy.isEmpty()) {
             conditions_copy.add("true");
-        }
+                return reduceListStrings(conditions_copy,"AND").orElse(conditions_copy.get(0));
+}
         return reduceListStrings(conditions_copy,"AND").orElse(conditions_copy.get(0));
 
 

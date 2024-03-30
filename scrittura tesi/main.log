@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  16 MAR 2024 17:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  30 MAR 2024 09:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/home/dav/Documenti/università/tesi/scrittura tesi/main.tex"
-(/home/dav/Documenti/università/tesi/scrittura tesi/main.tex
+**"/home/dav/Documenti/università/tesi/repo_git/data-mesh-soa-use-case/scrittura tesi/main.tex"
+(/home/dav/Documenti/università/tesi/repo_git/data-mesh-soa-use-case/scrittura tesi/main.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21> (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2021/10/04 v1.4n Standard LaTeX document class
@@ -23,11 +23,18 @@ File: size12.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
+) (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count194
+\float@exts=\toks16
+\float@box=\box50
+\@float@everytoks=\toks17
+\@floatcapt=\box51
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
  (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks16
+\KV@toks@=\toks18
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
  (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
@@ -50,9 +57,9 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
  (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2020/03/06 v1.0d TeX engine tests
 ))
-\Gm@cnth=\count194
-\Gm@cntv=\count195
-\c@Gm@tempcnt=\count196
+\Gm@cnth=\count195
+\Gm@cntv=\count196
+\c@Gm@tempcnt=\count197
 \Gm@bindingoffset=\dimen141
 \Gm@wd@mp=\dimen142
 \Gm@odd@mp=\dimen143
@@ -61,28 +68,40 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 \Gm@layoutheight=\dimen146
 \Gm@layouthoffset=\dimen147
 \Gm@layoutvoffset=\dimen148
-\Gm@dimlist=\toks17
+\Gm@dimlist=\toks19
 ) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2022/01/26 3.70 The Babel package
-\babel@savecnt=\count197
+\babel@savecnt=\count198
 \U@D=\dimen149
 \l@unhyphenated=\language4
  (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
-\bbl@dirlevel=\count198
+\bbl@dirlevel=\count199
  (/usr/share/texlive/texmf-dist/tex/generic/babel-italian/italian.ldf
 Language: italian 2020/05/21 v.1.4.04 Italian support for the babel system
-\it@lettering=\count199
-\it@doublequoteactive=\count266
-\it@ISOcompliance=\count267
+\it@lettering=\count266
+\it@doublequoteactive=\count267
+\it@ISOcompliance=\count268
 )) (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count268
+\etb@tempcnta=\count269
 ) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count269
-\l__pdf_internal_box=\box50
+\l__color_backend_stack_int=\count270
+\l__pdf_internal_box=\box52
 ) (./main.aux)
+Runaway argument?
+{\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagra 
+/home/dav/Documenti/università/tesi/repo_git/data-mesh-soa-use-case/scrittura tesi/main.tex:9: File ended while scanning use of \@writefile.
+<inserted text> 
+                \par 
+l.9 \begin{document}
+                    
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
@@ -99,19 +118,19 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
- (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count270
+\scratchcounter=\count271
 \scratchdimen=\dimen150
-\scratchbox=\box51
-\nofMPsegments=\count271
-\nofMParguments=\count272
-\everyMPshowfont=\toks18
-\MPscratchCnt=\count273
+\scratchbox=\box53
+\nofMPsegments=\count272
+\nofMParguments=\count273
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count274
 \MPscratchDim=\dimen151
-\MPnumerator=\count274
-\makeMPintoPDFobject=\count275
-\everyMPtoPDFconversion=\toks19
+\MPnumerator=\count275
+\makeMPintoPDFobject=\count276
+\everyMPtoPDFconversion=\toks21
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -169,123 +188,346 @@ Package pdftex.def Info: immagini/tesiSCIENZE_TECNOLOGIE.jpg  used on input line
 (pdftex.def)             Requested size: 455.24411pt x 178.90776pt.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./immagini/tesiSCIENZE_TECNOLOGIE.jpg>] (./main.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 4.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 4.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 4.
- [1
-
-])
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./immagini/tesiSCIENZE_TECNOLOGIE.jpg>] (./main.toc)
 \tf@toc=\write3
 \openout3 = `main.toc'.
 
- [2] [3
+ [1
 
-] [4
+] [2
+
+] [3
 
 ]
 Capitolo 1.
-[5
 
-] [6] [7] [8] [9] [10] [11]
-<immagini/vista architetture centralizzate 2023-07-21 11.27.28.excalidraw.png, id=43, 701.62125pt x 866.23625pt>
+LaTeX Warning: Citation `brooks_jr_mythical_1974' on page 4 undefined on input line 51.
+
+
+LaTeX Warning: Citation `isoiecieee_2011' on page 4 undefined on input line 54.
+
+
+LaTeX Warning: Citation `isoiecieee_2011' on page 4 undefined on input line 55.
+
+
+LaTeX Warning: Citation `whoneedsanArchitect' on page 4 undefined on input line 56.
+
+
+LaTeX Warning: Citation `perry_foundations_1992' on page 4 undefined on input line 60.
+
+
+LaTeX Warning: Citation `brooks_jr_mythical_1974' on page 4 undefined on input line 70.
+
+
+LaTeX Warning: Citation `thomas1999pragmatic' on page 4 undefined on input line 71.
+
+
+LaTeX Warning: Citation `whoneedsanArchitect' on page 4 undefined on input line 71.
+
+
+LaTeX Warning: Citation `designChoiche' on page 4 undefined on input line 74.
+
+[4
+
+]
+
+LaTeX Warning: Citation `perry_foundations_1992' on page 5 undefined on input line 78.
+
+[5] [6]
+
+LaTeX Warning: Citation `evans_domain-driven_2004' on page 7 undefined on input line 109.
+
+
+LaTeX Warning: Citation `adler_how_2014' on page 7 undefined on input line 126.
+
+[7] [8]
+
+LaTeX Warning: Citation `brooks_no_1987' on page 9 undefined on input line 149.
+
+
+LaTeX Warning: Citation `evans_domain-driven_2004' on page 9 undefined on input line 160.
+
+
+LaTeX Warning: Citation `conway_how_1968' on page 9 undefined on input line 176.
+
+
+LaTeX Warning: Citation `brooks_jr_mythical_1974' on page 9 undefined on input line 176.
+
+[9]
+
+LaTeX Warning: Citation `dehghani_data_2022' on page 10 undefined on input line 182.
+
+
+LaTeX Warning: Citation `zhamak_dehgani_how_2023' on page 10 undefined on input line 182.
+
+
+LaTeX Warning: Citation `zhamak_dehgani_data_2023' on page 10 undefined on input line 182.
+
+
+LaTeX Warning: Citation `zhamak_dehgani_how_2023' on page 10 undefined on input line 190.
+
+[10]
+<immagini/vista architetture centralizzate 2023-07-21 11.27.28.excalidraw.png, id=40, 701.62125pt x 866.23625pt>
 File: immagini/vista architetture centralizzate 2023-07-21 11.27.28.excalidraw.png Graphic file (type png)
 <use immagini/vista architetture centralizzate 2023-07-21 11.27.28.excalidraw.png>
 Package pdftex.def Info: immagini/vista architetture centralizzate 2023-07-21 11.27.28.excalidraw.png  used on input line 198.
 (pdftex.def)             Requested size: 280.64352pt x 346.48836pt.
- [12 <./immagini/vista architetture centralizzate 2023-07-21 11.27.28.excalidraw.png>] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22] [23]
-Capitolo 2.
-[24
 
-] [25] [26] [27] [28] [29] [30] [31]
-<immagini/business use cases data mesh SOA 2023-07-06 10.49.16.excalidraw.png, id=111, 1505.625pt x 1152.305pt>
+
+LaTeX Warning: Citation `dehghani_data_2022' on page 11 undefined on input line 211.
+
+
+LaTeX Warning: Citation `perry_foundations_1992' on page 11 undefined on input line 216.
+
+[11 <./immagini/vista architetture centralizzate 2023-07-21 11.27.28.excalidraw.png>]
+
+LaTeX Warning: Citation `fowler2001agile' on page 12 undefined on input line 222.
+
+[12]
+
+LaTeX Warning: Citation `cagan_inspired_2017' on page 13 undefined on input line 255.
+
+
+LaTeX Warning: Citation `ford_building_2022' on page 13 undefined on input line 258.
+
+
+LaTeX Warning: Citation `wilkinson_fair_2016' on page 13 undefined on input line 260.
+
+[13] [14]
+
+LaTeX Warning: Citation `meadows_thinking_2008' on page 15 undefined on input line 288.
+
+[15]
+
+LaTeX Warning: Citation `dehghani_data_2022' on page 16 undefined on input line 309.
+
+[16] [17]
+
+LaTeX Warning: Citation `josuttis_soa_2007' on page 18 undefined on input line 352.
+
+
+LaTeX Warning: Citation `josuttis_soa_2007' on page 18 undefined on input line 354.
+
+
+LaTeX Warning: Citation `eneterpiseSysRood' on page 18 undefined on input line 358.
+
+[18]
+
+LaTeX Warning: Citation `meyer1992applying' on page 19 undefined on input line 386.
+
+[19]
+
+LaTeX Warning: Citation `erl_service-oriented' on page 20 undefined on input line 408.
+
+
+LaTeX Warning: Citation `richards_fundamentals_2020' on page 20 undefined on input line 412.
+
+
+LaTeX Warning: Citation `erl_service-oriented' on page 20 undefined on input line 417.
+
+[20] [21] [22]
+Capitolo 2.
+
+LaTeX Warning: Citation `whoneedsanArchitect' on page 23 undefined on input line 459.
+
+
+LaTeX Warning: Citation `martin_fowler_xp_2002' on page 23 undefined on input line 463.
+
+
+LaTeX Warning: Citation `whoneedsanArchitect' on page 23 undefined on input line 463.
+
+
+LaTeX Warning: Citation `designChoiche' on page 23 undefined on input line 468.
+
+
+LaTeX Warning: Citation `goedegebuure2023data' on page 23 undefined on input line 480.
+
+
+LaTeX Warning: Citation `zachman1987framework' on page 23 undefined on input line 485.
+
+[23
+
+] [24]
+
+LaTeX Warning: Citation `brooks_no_1987' on page 25 undefined on input line 494.
+
+
+LaTeX Warning: Citation `pressman2005software' on page 25 undefined on input line 495.
+
+
+LaTeX Warning: Citation `dehghani_data_2022' on page 25 undefined on input line 504.
+
+
+LaTeX Warning: Citation `cockburn2008writing' on page 25 undefined on input line 505.
+
+[25] [26] [27] [28] [29]
+
+LaTeX Warning: Citation `dehghani_data_2022' on page 30 undefined on input line 624.
+
+
+LaTeX Warning: Citation `dwork2006differential' on page 30 undefined on input line 624.
+
+[30]
+<immagini/business use cases data mesh SOA 2023-07-06 10.49.16.excalidraw.png, id=108, 1505.625pt x 1152.305pt>
 File: immagini/business use cases data mesh SOA 2023-07-06 10.49.16.excalidraw.png Graphic file (type png)
 <use immagini/business use cases data mesh SOA 2023-07-06 10.49.16.excalidraw.png>
-Package pdftex.def Info: immagini/business use cases data mesh SOA 2023-07-06 10.49.16.excalidraw.png  used on input line 657.
+Package pdftex.def Info: immagini/business use cases data mesh SOA 2023-07-06 10.49.16.excalidraw.png  used on input line 658.
 (pdftex.def)             Requested size: 341.43307pt x 261.31462pt.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 665.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 665.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 665.
 
-Overfull \hbox (26.87343pt too wide) in paragraph at lines 664--681
+Overfull \hbox (26.87343pt too wide) in paragraph at lines 665--682
  [][] 
  []
 
-[32] [33 <./immagini/business use cases data mesh SOA 2023-07-06 10.49.16.excalidraw.png>]
-<immagini/data mesh elementare.png, id=119, 631.35875pt x 402.50375pt>
+
+LaTeX Warning: Citation `fowler2001agile' on page 31 undefined on input line 694.
+
+[31] [32 <./immagini/business use cases data mesh SOA 2023-07-06 10.49.16.excalidraw.png>]
+<immagini/data mesh elementare.png, id=116, 631.35875pt x 402.50375pt>
 File: immagini/data mesh elementare.png Graphic file (type png)
 <use immagini/data mesh elementare.png>
-Package pdftex.def Info: immagini/data mesh elementare.png  used on input line 702.
+Package pdftex.def Info: immagini/data mesh elementare.png  used on input line 703.
 (pdftex.def)             Requested size: 227.62206pt x 145.1162pt.
- [34 <./immagini/data mesh elementare.png>]
-<immagini/Data mesh con interfaccie.png, id=124, 1058.95625pt x 656.4525pt>
+ [33 <./immagini/data mesh elementare.png>]
+<immagini/Data mesh con interfaccie.png, id=121, 1058.95625pt x 656.4525pt>
 File: immagini/Data mesh con interfaccie.png Graphic file (type png)
 <use immagini/Data mesh con interfaccie.png>
-Package pdftex.def Info: immagini/Data mesh con interfaccie.png  used on input line 724.
+Package pdftex.def Info: immagini/Data mesh con interfaccie.png  used on input line 725.
 (pdftex.def)             Requested size: 455.24411pt x 282.20897pt.
- [35 <./immagini/Data mesh con interfaccie.png>] [36]
 
-LaTeX Warning: Citation `designPatterns' on page 37 undefined on input line 781.
 
-[37] [38]
-<immagini/Data Mesh con DB Adapter 2024-03-06 17.45.31.excalidraw.png, id=140, 975.645pt x 748.7975pt>
+LaTeX Warning: Citation `zhamak_dehgani_data_2023' on page 34 undefined on input line 742.
+
+
+LaTeX Warning: Citation `eventSourcing' on page 34 undefined on input line 746.
+
+
+LaTeX Warning: Citation `petrie2018streaming' on page 34 undefined on input line 746.
+
+[34 <./immagini/Data mesh con interfaccie.png>] [35]
+
+LaTeX Warning: Citation `designPatterns' on page 36 undefined on input line 782.
+
+
+LaTeX Warning: Citation `zhamak_dehgani_data_2023' on page 36 undefined on input line 796.
+
+
+LaTeX Warning: Citation `fowlerBitemporalNodate' on page 36 undefined on input line 796.
+
+[36] [37]
+<immagini/Data Mesh con DB Adapter 2024-03-06 17.45.31.excalidraw.png, id=137, 975.645pt x 748.7975pt>
 File: immagini/Data Mesh con DB Adapter 2024-03-06 17.45.31.excalidraw.png Graphic file (type png)
 <use immagini/Data Mesh con DB Adapter 2024-03-06 17.45.31.excalidraw.png>
-Package pdftex.def Info: immagini/Data Mesh con DB Adapter 2024-03-06 17.45.31.excalidraw.png  used on input line 833.
+Package pdftex.def Info: immagini/Data Mesh con DB Adapter 2024-03-06 17.45.31.excalidraw.png  used on input line 834.
 (pdftex.def)             Requested size: 455.24411pt x 349.39836pt.
- [39] [40 <./immagini/Data Mesh con DB Adapter 2024-03-06 17.45.31.excalidraw.png>]
-<immagini/Data Mesh supporto agli aggiornamenti 2024-03-08 15.55.58.excalidraw.png, id=148, 1513.655pt x 601.24625pt>
+ [38] [39 <./immagini/Data Mesh con DB Adapter 2024-03-06 17.45.31.excalidraw.png>]
+<immagini/Data Mesh supporto agli aggiornamenti 2024-03-08 15.55.58.excalidraw.png, id=145, 1513.655pt x 601.24625pt>
 File: immagini/Data Mesh supporto agli aggiornamenti 2024-03-08 15.55.58.excalidraw.png Graphic file (type png)
 <use immagini/Data Mesh supporto agli aggiornamenti 2024-03-08 15.55.58.excalidraw.png>
-Package pdftex.def Info: immagini/Data Mesh supporto agli aggiornamenti 2024-03-08 15.55.58.excalidraw.png  used on input line 869.
+Package pdftex.def Info: immagini/Data Mesh supporto agli aggiornamenti 2024-03-08 15.55.58.excalidraw.png  used on input line 870.
 (pdftex.def)             Requested size: 455.24411pt x 180.8248pt.
- [41] [42 <./immagini/Data Mesh supporto agli aggiornamenti 2024-03-08 15.55.58.excalidraw.png>] [43] [44] [45] [46]
-<immagini/disegno completo architettura 2024-03-12 18.03.16.excalidraw.png, id=169, 1599.9775pt x 1089.06876pt>
+ [40] [41 <./immagini/Data Mesh supporto agli aggiornamenti 2024-03-08 15.55.58.excalidraw.png>] [42] [43]
+
+LaTeX Warning: Citation `curbera2002unraveling' on page 44 undefined on input line 938.
+
+[44] [45]
+<immagini/disegno completo architettura 2024-03-12 18.03.16.excalidraw.png, id=166, 1599.9775pt x 1089.06876pt>
 File: immagini/disegno completo architettura 2024-03-12 18.03.16.excalidraw.png Graphic file (type png)
 <use immagini/disegno completo architettura 2024-03-12 18.03.16.excalidraw.png>
-Package pdftex.def Info: immagini/disegno completo architettura 2024-03-12 18.03.16.excalidraw.png  used on input line 988.
+Package pdftex.def Info: immagini/disegno completo architettura 2024-03-12 18.03.16.excalidraw.png  used on input line 990.
 (pdftex.def)             Requested size: 455.24411pt x 309.87267pt.
- [47 <./immagini/disegno completo architettura 2024-03-12 18.03.16.excalidraw.png>] [48] [49]
+ [46 <./immagini/disegno completo architettura 2024-03-12 18.03.16.excalidraw.png>] [47] [48]
 Capitolo 3.
-[50
 
-] (./main.bbl [51
+LaTeX Warning: Citation `data_mesh_in_action' on page 49 undefined on input line 1033.
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 87--90
-[]\OT1/cmr/m/n/12 M. Fo-w-ler. Bi-tem-po-ral hi-sto-ry. [On-li-ne]. Avai-la-ble:
- []
-
-[52
+[49
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 93--96
-[]\OT1/cmr/m/n/12 ------. Event sour-cing. [On-li-ne]. Avai-la-ble:
- []
+
+LaTeX Warning: Citation `opa_documentation' on page 50 undefined on input line 1056.
+
+<immagini/Opa funzionamento.png, id=182, 617.30624pt x 753.81625pt>
+File: immagini/Opa funzionamento.png Graphic file (type png)
+<use immagini/Opa funzionamento.png>
+Package pdftex.def Info: immagini/Opa funzionamento.png  used on input line 1065.
+(pdftex.def)             Requested size: 455.24411pt x 555.92892pt.
+[50] [51 <./immagini/Opa funzionamento.png>]
+
+LaTeX Warning: Citation `tesi_opa_polimi' on page 52 undefined on input line 1071.
+
+<immagini/OPAL funzionamento.png, id=190, 1351.0475pt x 956.57375pt>
+File: immagini/OPAL funzionamento.png Graphic file (type png)
+<use immagini/OPAL funzionamento.png>
+Package pdftex.def Info: immagini/OPAL funzionamento.png  used on input line 1082.
+(pdftex.def)             Requested size: 455.24411pt x 322.32614pt.
+[52 <./immagini/OPAL funzionamento.png>]
+<immagini/wso2 apim schema.png, id=195, 813.0375pt x 538.01pt>
+File: immagini/wso2 apim schema.png Graphic file (type png)
+<use immagini/wso2 apim schema.png>
+Package pdftex.def Info: immagini/wso2 apim schema.png  used on input line 1125.
+(pdftex.def)             Requested size: 455.24411pt x 301.2425pt.
+ [53]
+
+LaTeX Warning: Citation `documentazione_data_hub' on page 54 undefined on input line 1133.
+
+[54 <./immagini/wso2 apim schema.png>]
+
+LaTeX Warning: Citation `noauthor_postgresql_nodate' on page 55 undefined on input line 1143.
+
+[55]
+
+LaTeX Warning: Reference `primo_paragrafo_implementazione' on page 56 undefined on input line 1158.
+
+[56]
+
+LaTeX Warning: Citation `jwt_documentation' on page 57 undefined on input line 1208.
 
 
-Underfull \hbox (badness 1028) in paragraph at lines 127--130
-[]\OT1/cmr/m/n/12 Martin Fo-w-ler. The XP 2002 con-fe-ren-ce. [On-li-ne]. Avai-la-ble:
- []
+LaTeX Warning: Reference `funzionamento mediatore' on page 57 undefined on input line 1209.
 
-[53]) [54] (./main.aux)
+<immagini/Funzionamento mediatore dati analitci.png, id=210, 3854.4pt x 1397.22pt>
+File: immagini/Funzionamento mediatore dati analitci.png Graphic file (type png)
+<use immagini/Funzionamento mediatore dati analitci.png>
+Package pdftex.def Info: immagini/Funzionamento mediatore dati analitci.png  used on input line 1212.
+(pdftex.def)             Requested size: 455.24411pt x 165.0155pt.
+[57]
 
-LaTeX Warning: There were undefined references.
+LaTeX Warning: Reference `tab:dependencies' on page 58 undefined on input line 1225.
 
- ) 
-Here is how much of TeX's memory you used:
- 3372 strings out of 480236
- 56849 string characters out of 5895675
- 388919 words of memory out of 5000000
- 21305 multiletter control sequences out of 15000+600000
- 474803 words of font info for 46 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 55i,9n,62p,507b,237s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/dav/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (55 pages, 1226202 bytes).
-PDF statistics:
- 219 PDF objects out of 1000 (max. 8388607)
- 138 compressed objects within 2 object streams
- 0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+[58 <./immagini/Funzionamento mediatore dati analitci.png>]
 
+LaTeX Warning: Reference `fig:sequenza dati analitici' on page 59 undefined on input line 1246.
+
+<immagini/Gestore Dati analtici.png, id=218, 3854.4pt x 1530.71875pt>
+File: immagini/Gestore Dati analtici.png Graphic file (type png)
+<use immagini/Gestore Dati analtici.png>
+Package pdftex.def Info: immagini/Gestore Dati analtici.png  used on input line 1249.
+(pdftex.def)             Requested size: 455.24411pt x 180.78207pt.
+
+LaTeX Warning: Reference `funzionamento mediatore' on page 59 undefined on input line 1254.
+
+[59 <./immagini/Gestore Dati analtici.png>] [60]
+
+LaTeX Warning: Reference `tab:dependencies' on page 61 undefined on input line 1313.
+
+
+LaTeX Warning: Reference `tab:dependencies2' on page 61 undefined on input line 1313.
+
+/home/dav/Documenti/università/tesi/repo_git/data-mesh-soa-use-case/scrittura tesi/main.tex:1327: Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.1327 ...one dell'adapter del database analitico}
+                                                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/dav/Documenti/università/tesi/repo_git/
