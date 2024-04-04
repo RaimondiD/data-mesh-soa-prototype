@@ -42,29 +42,28 @@
 \chapter*{Ringraziamenti}
 
 \chapter*{Introduzione}
-
 Il termine architettura enterprise viene utilizzato per indicare l'insieme di organizzazione e infrastruttura di un sistema distribuito ed eterogeneo, potenzialmente con diversi proprietari, che spazia su diverse aree applicative.
 Negli ultimi decenni, grazie ai processi di digitalizzazione e il progresso nelle Data Science, si è sviluppata una sempre maggiore consapevolezza del valore dei dati che questo tipo di sistemi si trovano a gestire.
 Per consentire l'utilizzo di processi decisionali basati sui dati la raccolta e l'analisi delle informazioni distribuite nell'enterprise è diventata un'attività centrale per molte organizzazioni.
 I dati sono passati da sottoprodotto, necessario per il funzionamento del sistema, a risorsa strategica fondamentale per lo sviluppo dell'organizzazione.
-Data l'eterogeneità, la quantità e la distribuzione dei dati, la gestione di questi è  considerata un'attività intrinsecamente complessa.
-Per affrontare questa complessità si sono sviluppate le così dette architetture monolitiche, in cui i dati vengono raccolti dalle varie fonti in un'unico punto e da lì prelevati per essere analizzati.
+Data l'eterogeneità, la quantità e la distribuzione dei dati, la gestione di questi è considerata un'attività intrinsecamente complessa.
+Per affrontare questa complessità si sono sviluppate le così dette architetture monolitiche, in cui i dati vengono raccolti dalle varie fonti in un unico punto e da lì prelevati per essere analizzati.
 I risultati delle analisi poi verranno utilizzati per prendere decisioni strategiche e a loro volta salvati, nel punto di raccolta, per consentire analisi future.
 Di norma un team specializzato di data engineer si occupa della gestione e della raccolta dei dati dalle fonti, di effettuare eventuali trasformazioni per rimuovere errori o per adattarli a uno schema predefinito; infine di salvarli nel punto di raccolta.
 Il team cerca poi di soddisfare le richieste dei data scientist, che necessitano di alcuni dei dati raccolti per effettuare le analisi.
 Questa metodologia risulta funzionale, ma presenta alcune criticità.
 Nel 2019, con una serie di articoli che poi hanno portato alla scrittura di un libro, Zhamak Dehghani ha messo in luce alcuni limiti di questo approccio e ha proposto un paradigma socio-tecnologico alternativo chiamato Data Mesh.
-Z. Dehghani mette in luce come l'aumento delle fonti e delle richieste di analisi nel sistema ricada sul team di data Engineer, che rischia di diventare un collo di bottiglia per l'intero processo.
+Z. Dehghani mette in luce come l'aumento delle fonti e delle richieste di analisi nel sistema ricada sul team di data engineer, che rischia di diventare un collo di bottiglia per l'intero processo.
 Propone quindi quattro principi, per cambiare la concezione e le tecnologie utilizzate per la gestione dei dati in un'enterprise. 
 Il primo principio, Domain Ownership, si ispira ai concetti di Domain Driven Design e consiste nell'assegnare la responsabilità dei dati a chi li produce e a chi li utilizza.
 Il secondo principio, Data Product, specifica come questi team debbano organizzare e fornire i dati al resto dell'organizzazione.
 Il terzo principio, Federated Computational Governance, precisa come debba essere organizzata la governance sui dati in un sistema di questo tipo.
-Infine, il quarto principio, Self-serve Data Platform, indica gli strumenti e le modalità con cui l'organizzazione facilita, dal punto di vista tecnico, l'adozione dei tre principi precedenti.
-L'adozione di Data Mesh introduce una serie di cambiamenti, e un aumento non indifferente della complessità rispetto all'approccio di gestione tradizionale.
+Infine, il quarto principio, Self-serve Data Platform, indica gli strumenti e le modalità con cui l'organizzazione facilita, dal punto di vista tecnico, l'attuazione dei tre principi precedenti.
+L'adozione del Data Mesh introduce una serie di cambiamenti, e un aumento non indifferente della complessità rispetto all'approccio di gestione tradizionale.
 Si richiede che ogni fonte possegga le competenze tecniche necessarie per organizzare e fornire i dati, con gli strumenti che la Self-serve Data Platform mette a disposizione.
 Inoltre l'organizzazione deve possedere una maturità tecnologica e un team sufficientemente preparato per progettare e realizzare gli strumenti necessari.
-In questo lavoro di tesi si è progettata un'architettura orientata ai servizi per la realizzazione di questi strumenti e quindi per la realizzazione di una Self-serve Data Platform.
-Dopo aver studiato la letteratura esistente si è proposto un'approccio differente da quelli esistenti, e che si concentrasse non tanto sugli strumenti da utilizzare ma sulle loro proprietà e su come andassero utilizzati dai team per fornire i dati al resto dell'organizzazione.
+In questo lavoro di tesi si è progettata un'architettura orientata ai servizi per la realizzazione di questi strumenti e quindi per la costruzione di una Self-serve Data Platform.
+Dopo aver studiato la letteratura esistente si è proposto un'approccio differente, che si concentrasse non tanto sugli strumenti da utilizzare ma sulle loro proprietà e su come andassero utilizzati dai team per fornire i dati al resto dell'organizzazione.
 Si è cercato quindi di definire l'architettura rimanendo fedeli ai concetti di architettura introdotti in \cite{perry_foundations_1992} focalizzandosi in nello specifico sulla spiegazione delle motivazioni dietro alle scelte fatte.
 Lo scopo dell'architettura proposta è definire le componenti che consentano ai vari nodi dell'enterprise, a cui è stata assegnata la responsabilità dei dati di loro competenza di gestirli e fornirli al resto dell'organizzazione, minimizzando la ripetizione del lavoro nei diversi domini e lo sforzo tecnico richiesto. 
 Il lavoro dell'architetto software è complesso e richiede un'ampia esperienza, oltre che una conoscenza approfondita del problema, delle tecnologie e delle soluzioni esistenti.
@@ -73,10 +72,10 @@ Il lavoro non ha quindi l'ambizione di fornire una soluzione definitiva ma di in
 Nell'ultima parte del lavoro è stato realizzato un prototipo, che soddisfa in maniera parziale l'architettura proposta, con lo scopo di  verificare la fattibilità e mostrare alcune tecnologie o pattern utilizzabili per la realizzazione effettiva del sistema.
 La costruzione del prototipo ha inoltre permesso di rendere espliciti, di rivedere e di perfezionare, seguendo i principi di progettazione iterativa, alcuni aspetti dell'architettura utilizzando il feedback fornito dal'implementazione.
 Il prototipo è stato realizzato utilizzando tecnologie open source cercando di rendere il progetto il più possibile estendibile e replicabile.
-La tesi è organizzata nel seguente modo: nel capitolo \ref{fondamenti teorici} sono definiti i concetti di architettura software, domain driven design, data mesh e architettura orientata ai servizi, che costituiscono le basi teoriche su cui è fondato il lavoro.
-Nel capitolo \ref{architetturaLogica} viene presentata l'architettura proposta; viene approfondita la necessità di creare un'architettura, i requisiti che deve presentare per soddisfare i principi del Data Mesh, la responsabilità e le motivazioni dietro alle componenti individuate per risolvere il problema.
+La tesi è organizzata nel seguente modo: nel Capitolo \ref{fondamenti teorici} sono definiti i concetti di architettura software, Domain Driven Design, Data Mesh e architettura orientata ai servizi, che costituiscono le basi teoriche su cui è fondato il lavoro.
+Nel Capitolo \ref{architetturaLogica} viene presentata l'architettura proposta; viene approfondita la necessità di creare un'architettura, i requisiti che deve presentare per soddisfare i principi del Data Mesh, la responsabilità e le motivazioni dietro alle componenti individuate per risolvere il problema.
 Viene quindi effettuato un confronto con altre architetture presentate in letteratura.
-Infine nel capitolo \ref{implementazione} viene presentata l'implementazione del prototipo, vengono mostrate le tecnologie utilizzate e descritta la realizzazione delle parti.
+Infine nel Capitolo \ref{implementazione} viene presentata l'implementazione del prototipo, vengono mostrate le tecnologie utilizzate e descritta la realizzazione delle parti.
 
 \chapter{Fondamenti teorici}\label{fondamenti teorici}
 In questo capitolo sono definiti i fondamenti teorici sui quali si basa questa tesi.
@@ -380,7 +379,8 @@ La piattaforma si occuperà anche della discoverability dei Data Product, creand
 Infine la piattaforma si occuperà di fare in modo che le politiche e le metriche proposte dal team centralizzato siano applicate e misurate su tutti i Data Product.
 Nel lavoro di tesi si approfondirà l'utilizzo dell'architettura orientata ai servizi per la realizzazione di una Self-Serve Data Platform
 
-
+\subsection{Problematiche del Data Mesh}
+Sebbene la stesura dei principi sia recente e l'idea sia stata accolta in maniera positiva dalla comunità, sono emerse alcune criticità riguardanti alcuni concetti e soprattutto l'applicazione pratica dei principi.
 
 
 
@@ -692,7 +692,7 @@ Si cercherà inoltre di rispettare i principi di singola responsabilità e il ri
 
 \begin{figure}
         \centering
-        \includegraphics[width=0.75\linewidth]{immagini/business use cases data mesh SOA 2023-07-06 10.49.16.excalidraw.png}
+        \includegraphics[width = \linewidth]{immagini/business use cases data mesh SOA 2023-07-06 10.49.16.excalidraw.png}
         \caption{Sintesi dei requisiti, espressi sotto format di obbiettivi degli agenti coinvolti}
         \label{fig:requisitiBusiness}
     \end{figure}
@@ -776,26 +776,26 @@ Fornire dati analitici infatti è l'obbiettivo principale di un Data Product.
 Nella sua forma più semplice il metodo risponde a una richiesta fornendo i dati conservati nel Data Product.
 Vengono ora proposte alcune funzionalità ulteriori che si ritiene possano essere integrate nel metodo.
 Prima di tutto si potrebbe specificare tramite l'interfaccia una preferenza sulla rappresentazione dei dati. 
-Un Data Product infatti secondo \cite{zhamak_dehgani_data_2023} potrebbe presentare i dati in più modi, con lo scopo di facilitarne utilizzi differenti.
+Secondo \cite{zhamak_dehgani_data_2023} infatti, un Data Product potrebbe presentare i dati in più modi, con lo scopo di facilitarne utilizzi differenti.
 Un'altra possibile aggiunta al metodo è il controllo sul ruolo dell'utente che la sta effettuando. 
 Questo, insieme a un sistema di autenticazione e all'adeguato supporto nel Data Product, permetterebbe di fornire solo alcune porzioni dei dati, in base alle politiche interne stabilite dal Data Product.
 Questi sono requisiti necessari nel caso il dato contenga informazioni sensibili.
 Un'altra funzionalità importante per l'interfaccia di accesso ai dati è il supporto al ``Change Data Capture'', anche detto CDC \cite{eventSourcing,petrie2018streaming}.
-Con CDC si intendono un'insieme di pratiche che permettono di catturare il cambiamento nel sistema.
+Con CDC si intende un'insieme di pratiche che permettono di catturare il cambiamento nel sistema.
 Questo permette per esempio di ottenere aggiornamenti incrementali riguardanti i cambiamenti del dato analitico.
 Si supponga di avere un Data Product \textit{B}, che viene creato a partire dai dati conservati da Data Product \textit{A}. 
 Per la creazione di \textit{B} si richiedono tutti i dati conservati in \textit{A}, che poi vengono trasformati in \textit{B} a seconda delle sue esigenze.
 In seguito si vuole fare in modo che il Data Product \textit{B} rimanga aggiornato rispetto ai cambiamenti di \textit{A}.
 In un sistema che supporta il CDC \textit{B} manderà a \textit{A} la richiesta di aggiornamento, fornendo un'informazione aggiuntiva, che potrebbe essere per esempio la data dell'ultimo aggiornamento ricevuto da \textit{A}.
 Il Data Product \textit{A} risponderà alla richiesta mandando solo le informazioni che sono cambiate a partire dalla data specificata.
-Nell'interfaccia di acceso ai dati si ritiene quindi, nel caso il Data Product effettui CDC, che il richiedente possa aggiungere le informazioni che permettano di capire i dati sufficienti per l'aggiornamento del richiedente.
-In questo modo si crea un unico punto di accesso, responsabile sia dell'aggiornamento che della consulta dei dati.
+Nell'interfaccia di accesso ai dati si ritiene quindi, nel caso il Data Product effettui CDC, che il richiedente possa aggiungere le informazioni che permettano di capire i dati sufficienti per l'aggiornamento del richiedente.
+In questo modo si crea un unico punto di accesso, responsabile sia dell'aggiornamento che della consultazione dei dati.
 Infine, un ultimo requisito per questo metodo è il supporto a un meccanismo di query che permetta di selezionare solo una parte del dato conservato nel Data Product.
 Questo non è esplicitamente richiesto dai requisiti individuati nella fase di raccolta ma permette di ridurre la quantità di dati trasmessi.
-Il metodo per per la modifica della politiche è uno dei requisiti individuati nel paragrafo \ref{requisiti}.
+Il metodo per per la modifica della politiche è uno dei requisiti individuati nel Paragrafo \ref{requisiti}.
 L'accesso alle politiche locali da parte del team di governance permette al team di intervenire direttamente nel caso in cui si verifichino problemi riguardanti il trattamento dei dati.
 Questa interfaccia dovrebbe permettere al team di governance di specificare nuove politiche, che vadano a sovrascrivere provvisoriamente quelle esistenti.
-Infine il metodo per la richiesta di meta-dati viene introdotto per permettere ai team analitici di raccogliere informazioni sui Data Product.
+Infine, il metodo per la richiesta di meta-dati viene introdotto per permettere ai team analitici di raccogliere informazioni sui Data Product.
 Il metodo dovrebbe semplicemente fornire l'accesso ai meta-dati del Data Product, organizzati in modo da poter raccontare il dato conservato.
 L'introduzione del mediatore come servizio rende complessivamente il sistema più complesso.
 Viene proposta con l'intento di garantire in maniera automatizzata l'adozione di un'interfaccia uniforme per tutti i Data Product del sistema.
@@ -811,7 +811,7 @@ La creazione di un mediatore semplifica anche il lavoro dei team assegnati ai Da
 
 \subsection{Adapter per database analitici e operazionali}
 Uno dei problemi comuni ai team operazionali e analitici nella realizzazione di un Data Product è la gestione del database in cui i dati analitici verranno conservati.
-Lasciare a ogni team questo compito permette una maggiore autonomia ma richiede uno sforzo ripetute in diversi Data Product.
+Lasciare a ogni team questo compito permette una maggiore autonomia ma richiede uno sforzo ripetuto in diversi Data Product.
 Ogni team dovrebbe infatti gestire l'integrazione in modo che il database sia in grado di rispondere alle richieste esposte dal mediatore.
 Questo richiede essenzialmente la possibilità di scrivere e leggere dati dal database e potenzialmente supporto al CDC e a un ipotetico linguaggio di query.
 L'adozione di un database specifico per team rischia di creare un problema di lock-in, sia nei confronti del fornitore della soluzione, sia nei confronti dei membri del team, che potrebbero essere gli unici a utilizzare quella tecnologia.
@@ -824,11 +824,12 @@ Si propone, oltre a fissare l'interfaccia dell'adapter di togliere il database a
 Il team di governance procederà a individuare un numero limitato di database analitici, disponibili per la memorizzazione dei dati di tutti i Data Product.
 Verrà quindi creati degli adapter, che esporranno un'interfaccia per i Data Product e si occuperanno dell'integrazione con i database analitici.
 Si è pensato di lavorare in questo modo perché le perplessità nell'utilizzo di alcune soluzioni di storage centralizzate, per esempio i Data Lake, sono legate alla difficoltà di ricerca e di interpretare dei dati. 
-Dal punto di vista tecnologico invece questo tipo di soluzione è ampiamente supportata .
+Dal punto di vista tecnologico invece questo tipo di soluzione è ampiamente supportata.
 Si propone quindi di predisporre un numero limitato di database per il salvataggio dei dati, diminuendo la quantità di integrazione necessarie, e si utilizzano poi i Data Product come punti di accesso logico alle risorse.
 Nel caso si voglia applicare il Data Mesh in un sistema enterprise che lavora già con un unico Data Lake è possibile mantenere i dati conservati lì e cambiare semplicemente le modalità di accesso ai dati analitici, che avverranno tramite richieste ai Data Product.
-Quando un'utente richiede un dato quindi effettua la richiesta al mediatore, questa viene inoltrata a un servizio interno al Data Product che si occuperà di interagire con l'adapter del database analitico. 
-Infine vengono ritornati all'utente i risultati.
+Quando un utente richiede un dato effettua la richiesta al mediatore.
+Questa viene inoltrata a un servizio interno al Data Product che si occuperà di interagire con l'adapter del database analitico. 
+Infine vengono inviati i risultati all'utente.
 L'interfaccia dell'Adapter sarà quindi molto semplice, e dovrà permettere a ogni Data Product di recuperare i propri dati e/o di aggiornarli.
 Per supportare la possibilità di modificare ed effettuare aggiornamenti incrementali sui dati viene suggerito in \cite{zhamak_dehgani_data_2023,fowlerBitemporalNodate}
 di garantire CDC tramite il concetto di Bitemporal Data.
@@ -868,14 +869,14 @@ Nella Figura \ref{fig:AdapterDB} vengono schematizzate le interfacce delle due t
 
 \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{immagini/Data Mesh con DB Adapter 2024-03-06 17.45.31.excalidraw.png}
+    \includegraphics[width =\linewidth]{immagini/Data Mesh con DB Adapter 2024-03-06 17.45.31.excalidraw.png}
     \caption{Adapter Database analitici e operazionali}
     \label{fig:AdapterDB}
 \end{figure}
 
 \subsection{Supporto per l'aggiornamento dei dati analitici}
 Come già accennato, il successivo servizio progettato per l'architettura si occupa di garantire l'aggiornamento automatico dei Data Product.
-Durante la definizione del Data Product,il team responsabile dovrebbe stabilire la frequenza con cui i dati analitici debbano essere aggiornati.
+Durante la definizione del Data Product, il team responsabile dovrebbe stabilire la frequenza con cui i dati analitici debbano essere aggiornati.
 Questa decisione dovrà essere svolta valutando i tipi di analisi possibili sul dato e valutando la frequenza di aggiornamento dei dati garantita dalle fonti. 
 Si propone quindi un servizio, fornito dalla Self-Serve Data Platform, che utilizzi la frequenza individuata dal team per la gestione degli aggiornamenti.
 Il servizio otterrà il dato analitico utilizzando il metodo di accesso ai dati che si assume essere uniforme sia nei Data Product che nei Database operazionali.
@@ -883,7 +884,7 @@ Per fare la richiesta è necessario che gli indirizzi delle fonti e il formato c
 Verrà quindi mandata una richiesta alla fonte che potrebbe richiedere una procedura di autenticazione. 
 In questo caso è necessario che il servizio abbia ricevuto le credenziali o un token per l'accesso.
 Per consentire gli aggiornamenti il servizio deve inoltre mantenere per ogni fonte le informazioni per richiedere solo i dati necessari all'aggiornamento, sfruttando, se presente, il supporto al CDC.
-Si potrebbero, nel caso i meccanismi di query siano supportati dalle fonti, comunicare al servizio per ogni fonte il tipo di richiesta da effettuare. 
+Si potrebbe, nel caso i meccanismi di query siano supportati dalle fonti, comunicare al servizio per ogni fonte il tipo di richiesta da effettuare. 
 Una volta effettuate le richieste e ottenuti i dati dalle fonti, il servizio proposto dovrebbe inoltrare i dati a un altro servizio, realizzato dal Data Product per la pulizia, aggregazione e trasformazione dei dati. 
 La componente che ha effettuato le trasformazioni sui dati avrà poi la responsabilità di salvarle nel Database analitico.
 Chiamiamo il servizio descritto, fornito dalla Self-Serve Data Platform, gestore degli aggiornamenti.
@@ -904,7 +905,7 @@ Si è cercato di raggruppare le funzionalità e presentare un'ipotetica divisone
 In bianco invece, sono mostrate le componenti fornite dalla Self-Serve Data Platform. 
 \begin{figure}
     \centering
-    \includegraphics[width=1\linewidth]{immagini/Data Mesh supporto agli aggiornamenti 2024-03-08 15.55.58.excalidraw.png}
+    \includegraphics[width=0.5\linewidth]{immagini/Data Mesh supporto agli aggiornamenti 2024-03-08 15.55.58.excalidraw.png}
     \caption{Data mesh con i servizi principali definiti}
     \label{fig:dp supporto aggiornamenti}
 \end{figure}
@@ -1022,7 +1023,7 @@ La differenza principale fra l'utilizzo del mediatore rispetto all'ESB è che me
 \subsection{Servizio per la creazione di un Data Product}
 Come ultimo servizio opzionale si propone un servizio che permetta la creazione automatica di un Data Product.
 Fino ad ora sono stati individuati i componenti mostrati nella Figura \ref{fig:architettura completa}.
-\begin{figure}[H]
+\begin{figure}[]
     \centering
     \includegraphics[width=\linewidth]{immagini/disegno completo architettura 2024-03-12 18.03.16.excalidraw.png}
     \caption{Vista completa sulle componenti proposte}
@@ -1138,7 +1139,7 @@ Anche la risposta del servizio viene fornita sotto forma di JSON; questo garanti
 Nella Figura\ref{OPA image} viene schematizzato il funzionamento di OPA
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{immagini/Opa funzionamento.png}
+    \includegraphics[width= 0.75\linewidth]{immagini/Opa funzionamento.png}
     \caption{Schema sul funzionamento ad alto livello di un servizio Open Policy Agent}
     \label{OPA image}
 \end{figure}
@@ -1285,10 +1286,10 @@ Infine l'API manager consente, se configurato correttamente, di inoltrare al ser
 Queste informazioni vengono definite e gestite dall'identity server, secondo lo standard OpenID.
 L'identity server ha quindi il compito di inoltrare all'API manager queste informazioni e di garantire che vengano inserite dagli utenti in fase di registrazione.
 Quando viene effettuata una richiesta all'identity server questo codifica e trasmette le informazioni dell'utente sotto forma di Java Web Token (JWT), \cite{jwt_documentation}, un formato che permette di comunicare informazioni e credenziali in maniera sicura.
-Il diagramma di sequenza\ref{funzionamento mediatore} riassume le comunicazioni necessarie per garantire l'accesso ai dati analitici.
-\begin{figure}
+Il diagramma di sequenza, illustrato nella Figura \ref{funzionamento mediatore} riassume le comunicazioni necessarie per garantire l'accesso ai dati analitici.
+\begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{immagini/Funzionamento mediatore dati analitci.png}
+    \includegraphics[width = 0.5\linewidth]{immagini/Funzionamento mediatore dati analitci.png}
     \caption{Diagramma di sequenza riguardante il le interazioni col mediatore per l'accesso ai dati analitici}
     \label{funzionamento mediatore}
 \end{figure}
@@ -1326,14 +1327,14 @@ All'avvio del servizio vengono richieste le credenziali del Data Product owner, 
 Il servizio di autenticazione, nel caso le credenziali siano corrette, ritorna un token di accesso.
 Il token verrà utilizzato per effettuare tutte le richieste ai servizi interni.
 Il diagramma di sequenza, illustrato nella Figura \ref{fig:sequenza dati analitici}, mostra le interazioni necessarie per fornire all'utente i dati analitici.
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{immagini/Gestore Dati analtici.png}
+    \includegraphics[width=0.5\linewidth]{immagini/Gestore Dati analtici.png}
     \caption{Diagramma di sequenza con le interazioni necessarie per l'ottenimento di dati analitici}
     \label{fig:sequenza dati analitici}
 \end{figure}
 In primo luogo l'utente effettua la richiesta al mediatore. 
-Le interazioni con il mediatore sono state precedentemente descritte e riassunte nell'immagine \ref{funzionamento mediatore}.
+Le interazioni con il mediatore sono state precedentemente descritte e riassunte nella Figura \ref{funzionamento mediatore}.
 Il mediatore inoltra la richiesta al servizio, utilizzando uno dei metodi HTTP.
 Il gestore dei dati analitici espone un'interfaccia molto semplice, che permette di effettuare una richiesta di tipo GET per ottenere i dati analitici.
 La richiesta prevede un parametro opzionale, si tratta della data dell'ultima richiesta effettuata dall'utente, utilizzabile per richiedere solo i dati modificati successivamente alla data.
@@ -1420,7 +1421,7 @@ Inoltre il lock-in è meno rischioso, dato che si tratta di una soluzione open-s
 Infine, come visto nel paragrafo \ref{opa_opal}, è possibile utilizzare OPAL per supportare l'aggiornamento e la gestione centralizzata delle politiche.
 Nel caso la richiesta sia ritenuta valida si procede poi a effettuare la richiesta al Database e a restituire al mittente i dati richiesti.
 
-\section{Commento dei risultati}
+\section{Commento dei risultati}\label{commento risultati}
 La parte finale del lavoro ha portato alla creazione degli strumenti per la realizzazione di un Data Product funzionante.
 Il lavoro è essenzialmente un proof of concept e presenta diversi limiti.
 In primo luogo l'implementazione è parziale e non fornisce quindi un'esempio concreto dell'architettura proposta nella sua interezza.
@@ -1449,9 +1450,47 @@ Il codice realizzato inoltre è relativamente semplice e si ritiene sia facilmen
 Si spera quindi, per quanto riguarda l'accesso differenziato ai dati e la realizzazione di Data Product con uno sforzo contenuto, che l'architettura e l'implementazione proposta possano essere d'aiuto.
 
 \chapter*{Conclusioni}
-In una parte del libro \cite{dehghani_data_2022} viene introdotto il concetto di Data Manifest, un documento che contiene le informazioni, ricavabili dal dominio, che differenziano tra loro i team con la responsabilità di fornire i dati all'organizzazione di mantenere un Data Manifest, lasciando le operazioni tecniche al team responsabile della piattaforma.
-Si ritiene infatti in un contesto enterprise non tutti i team abbiano le capacità o il tempo per realizzare un Data Product, che quindi richiede il minimo sforzo possibile da parte loro.
-Si è pensato che una possibile soluzione a questo problema potesse essere la realizzazione di una SOA, che definisse una serie di servizi configurabili, indipendenti dal dominio, che permettessero di realizzare un Data Product.   
+In una parte del libro \cite{dehghani_data_2022} viene introdotto il concetto di Data Manifest, un documento che contiene le informazioni, ricavabili dal dominio, che permettono di definire un Data Product.
+Una piattaforma ideale dovrebbe fornire gli strumenti che consentano ai team, operazionali e analitici, di creare e mantenere un Data Manifest e di ottenere un Data Product partendo da questo tipo di artefatto.
+Sebbene infatti i team con responsabilità sui dati posseggano la conoscenza del dominio necessaria per interpretare e presentare i dati, potrebbero non disporre del tempo o delle risorse tecniche per poter creare e gestire un Data Product. 
+La letteratura esistente si focalizza sulle tecnologie e sulla progettazione della piattaforma, mettendo al centro gli strumenti da realizzare per garantire il rispetto dei principi del Data Mesh.
+In questo lavoro si è perseguito un obbiettivo simile, spostando il focus dalla piattaforma in sè e mettendo al centro il concetto di Data Product.
+Nel secondo capitolo si è partiti dagli agenti che interagiscono con sistema, per individuare i requisiti che un Data Product e le componenti esterne ad esso devono garantire.
+In maniera incrementale sono poi stati proposti diversi servizi, pensati per soddisfare i requisiti vincolando il meno possibile un'eventuale realizzazione degli stessi.
+I servizi così definiti costituiscono gli strumenti della piattaforma.
+Nelle proposte trovate in letteratura alla Self-serve Data Platform veniva semplicemente dato il compito di fornire alcuni strumenti.
+Si lasciava poi ai Data Product la libertà e la responsabilità di utilizzarli per creare, per ognuno di essi, un'architettura specifica. 
+Nel primo capitolo si è definito il concetto di piattaforma come ``insieme di strumenti utilizzabili da team indipendenti per velocizzare lo sviluppo e ridurre il carico cognitivo''.
+Si ritiene che vincolare la struttura interna del Data Product possa permettere di raggiungere gli obiettivi di una piattaforma così definita.
+Questa tesi quindi si differenzia dagli altri lavori e assume che data la similarità delle operazioni che ogni Data Product deve effettuare, la struttura interna di un Data Product possa essere definita in maniera generale.
+Si è quindi progettata una SOA che vincola la realizzazione del Data Product specificando l'ordine, le caratteristiche e le connessioni dei servizi che andranno utilizzati per lo svolgimento delle operazioni.
+Nel terzo capitolo, basandosi dall'architettura definita, si è descritta la realizzazione di un prototipo di Data Product.
+L'implementazione del prototipo ha permesso di mostrare la fattibilità di sviluppare alcune delle componenti dell'architettura.
+Sono inoltre stati approfonditi alcuni concetti tra cui l'accesso differenziato al dato.
+Infine ha permesso di mostrare alcune tecnologie open source, documentando come potrebbero essere utilizzate per la creazione di una Data Mesh.
+Il prototipo permette, modificando essenzialmente le politiche di accesso e poco altro, di realizzare un nuovo Data Product, minimizzando il tempo di creazione.
+Il prototipo riesce, almeno in parte, a consentire la creazione di un Data Product partendo da un Data Manifest.
+Nonostante questo risultato il lavoro svolto presenta diverse criticità.
+Le cause principali sono state la scarsità di tempo, la ridotta conoscenza iniziale del settore e la mancanza dell'esperienza necessaria per la realizzazione di architettura software.
+In primo luogo alcuni riscontri ottenuti sull'architettura proposta hanno sottolineato come i vincoli e le caratteristiche di alcune componenti  rimangano troppo astratte, e non siano quindi utili in fase di realizzazione.
+In accordo con \cite{perry_foundations_1992} sarebbe poi stato opportuno fornire diverse viste sull'architettura e, basandosi sugli altri lavori, fornire una descrizione delle tecnologie utilizzabili per l'implementazione.
+Inoltre non sono stati introdotti vincoli sulle modalità di rappresentazione dei dati all'interno dell'organizzazione. 
+Questo potrebbe rendere difficile il processo di aggregazione dei dati provenienti da diversi Data Product, aumentando la difficoltà, i tempi e il carico cognitivo necessario per creare nuovi Data Product.
+A livello di progettazione non sono state considerate nemmeno la robustezza e l'affidabilità del sistema.
+Infine, per semplicità, non sono stati considerati come parte della piattaforma strumenti che facilitassero l'analisi dei dati, contrariamente da quanto indicato in \cite{dehghani_data_2022}.
+Nell'ultimo capitolo viene presentato il prototipo realizzato,
+le cui limitazioni sono state presentate nel paragrafo \ref{commento risultati} e vengono brevemente riassunte qui.
+L'implementazione è stata parziale, e non ha permesso di verificare la fattibilità della realizzazione di tutte le componenti proposte.
+Sono stati utilizzati dati fittizi e in generale il prototipo è stato testato e validato solo in un contesto controllato.
+Infine, alcune componenti nell'attuale implementazione risultano semplici e si potrebbero estendere per soddisfare una maggiore varietà di richieste.
+Tra i possibili sviluppi futuri sarebbe senza dubbio interessante sottoporre la proposta ad aziende enterprise, per raccogliere feedback e cercare di lavorare sui punti più critici e sugli elementi non considerati dall'architettura.
+Sarebbe poi opportuno realizzare un prototipo completo, che comprenda le altre componenti non sviluppate e quindi  testare il tutto creando più Data Product.
+Per verificare la generalità dell'architettura si potrebbe provare ad applicare quanto descritto in un contesto reale, andando a realizzare uno o più Data Product e fornendo gli strumenti e il supporto per la creazione di altri.
+A livello di ricerca si potrebbero approfondire i temi di Computational Governance e interoperabilità nella rappresentazione dei dati.
+Per quanto riguarda il primo tema sarebbe interessante estendere il lavoro approfondendo, oltre all'accesso differenziato, il monitoraggio e la gestione dei polisemi.
+A livello di interoperabilità si potrebbe indagare sulla possibilità di creare una formato di rappresentazione dei dati che faciliti i processi di aggregazione ma che sia abbastanza flessibile da consentire ai team di lavorare rimanendo fedeli alla semantica dei dati conservati.
+L'argomento viene trattato in \cite{dehghani_data_2022} ma si ritiene che andrebbe ulteriormente approfondito.
+Infine, si potrebbero documentare e approfondire i processi, in termini di organizzazione aziendale e comunicazione, necessari a rendere possibile l'applicazione dei principi di Data Mesh all'interno di un'enterprise.
 \bibliographystyle{IEEEtranS} 
 \bibliography{bibliography} 
 \end{document}
