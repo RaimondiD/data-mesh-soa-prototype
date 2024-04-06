@@ -1,12 +1,19 @@
 \documentclass[12pt]{report}
+\usepackage{csquotes} 
+\usepackage[maxalphanames=1,labelalpha,maxbibnames=99, sorting=anyt, style=ieee,   backend=biber]{biblatex}
 \usepackage{float}
 \usepackage{graphicx} % required for inserting images
 \usepackage{setspace}
 \usepackage{geometry}
+\usepackage{biblatex}
+\addbibresource{bibliography.bib}
 \usepackage[italian]{babel}
 \geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
 
+
+
 \begin{document}
+
 \begin{titlepage}
     \begin{center}
     \includegraphics[width=\textwidth]{immagini/tesiSCIENZE_TECNOLOGIE.jpg}\\
@@ -42,40 +49,40 @@
 \chapter*{Ringraziamenti}
 
 \chapter*{Introduzione}
-Il termine architettura enterprise viene utilizzato per indicare l'insieme di organizzazione e infrastruttura di un sistema distribuito ed eterogeneo, potenzialmente con diversi proprietari, che spazia su diverse aree applicative.
-Negli ultimi decenni, grazie ai processi di digitalizzazione e il progresso nelle Data Science, si è sviluppata una sempre maggiore consapevolezza del valore dei dati che questo tipo di sistemi si trovano a gestire.
-Per consentire l'utilizzo di processi decisionali basati sui dati la raccolta e l'analisi delle informazioni distribuite nell'enterprise è diventata un'attività centrale per molte organizzazioni.
-I dati sono passati da sottoprodotto, necessario per il funzionamento del sistema, a risorsa strategica fondamentale per lo sviluppo dell'organizzazione.
+Il termine architettura enterprise viene utilizzato per indicare l'insieme di organizzazione e infrastruttura di un sistema distribuito ed eterogeneo che spazia su diverse aree applicative.
+Negli ultimi decenni, grazie ai processi di digitalizzazione e il progresso nella Data Science, si è sviluppata una consapevolezza sempre maggiore del valore dei dati che questo tipo di sistemi si trovano a gestire.
+I dati sono passati da sottoprodotto, necessario per il corretto funzionamento del sistema, a risorsa strategica fondamentale per lo sviluppo dell'organizzazione.
+Per consentire l'applicazione di processi decisionali basati sui dati, le operazioni di raccolta e di analisi delle informazioni distribuite nell'enterprise sono diventate centrali per molte organizzazioni.
 Data l'eterogeneità, la quantità e la distribuzione dei dati, la gestione di questi è considerata un'attività intrinsecamente complessa.
 Per affrontare questa complessità si sono sviluppate le così dette architetture monolitiche, in cui i dati vengono raccolti dalle varie fonti in un unico punto e da lì prelevati per essere analizzati.
-I risultati delle analisi poi verranno utilizzati per prendere decisioni strategiche e a loro volta salvati, nel punto di raccolta, per consentire analisi future.
-Di norma un team specializzato di data engineer si occupa della gestione e della raccolta dei dati dalle fonti, di effettuare eventuali trasformazioni per rimuovere errori o per adattarli a uno schema predefinito; infine di salvarli nel punto di raccolta.
-Il team cerca poi di soddisfare le richieste dei data scientist, che necessitano di alcuni dei dati raccolti per effettuare le analisi.
+I risultati delle analisi verranno utilizzati per prendere decisioni strategiche e a loro volta salvati nel punto di raccolta per consentire analisi future.
+Di norma, un team di data engineer si occupa della gestione e della raccolta dei dati dalle fonti, di effettuare eventuali trasformazioni per rimuovere errori o per adattarli a uno schema predefinito e infine di salvarli nel punto di raccolta.
+Il team cerca poi di soddisfare le richieste dei data scientist, fornendo loro alcuni dei dati raccolti per permettergli di effettuare delle analisi.
 Questa metodologia risulta funzionale, ma presenta alcune criticità.
-Nel 2019, con una serie di articoli che poi hanno portato alla scrittura di un libro, Zhamak Dehghani ha messo in luce alcuni limiti di questo approccio e ha proposto un paradigma socio-tecnologico alternativo chiamato Data Mesh.
-Z. Dehghani mette in luce come l'aumento delle fonti e delle richieste di analisi nel sistema ricada sul team di data engineer, che rischia di diventare un collo di bottiglia per l'intero processo.
-Propone quindi quattro principi, per cambiare la concezione e le tecnologie utilizzate per la gestione dei dati in un'enterprise. 
-Il primo principio, Domain Ownership, si ispira ai concetti di Domain Driven Design e consiste nell'assegnare la responsabilità dei dati a chi li produce e a chi li utilizza.
+Nel 2019, con una serie di articoli che poi hanno portato alla scrittura di un libro, Zhamak Dehghani ha evidenziato alcuni limiti di questo approccio e ha proposto un paradigma socio-tecnologico alternativo chiamato Data Mesh.
+Nei lavori si sottolinea come l'aumento delle fonti e delle richieste di analisi nel sistema ricada sul team di data engineer, che rischia di diventare un collo di bottiglia per l'intero processo.
+Vengono quindi proposti dall'autrice quattro principi, con lo scopo di cambiare la concezione e il processo di gestione dei dati analitici in un'enterprise. 
+Il primo principio, Domain Ownership, si ispira ai concetti di Domain Driven Design e propone di assegnare la responsabilità dei dati ai team che li producono o che li utilizzano; l'idea è di affidare la gestione dei dati a chi ne comprenda meglio la semantica.
 Il secondo principio, Data Product, specifica come questi team debbano organizzare e fornire i dati al resto dell'organizzazione.
 Il terzo principio, Federated Computational Governance, precisa come debba essere organizzata la governance sui dati in un sistema di questo tipo.
 Infine, il quarto principio, Self-serve Data Platform, indica gli strumenti e le modalità con cui l'organizzazione facilita, dal punto di vista tecnico, l'attuazione dei tre principi precedenti.
-L'adozione del Data Mesh introduce una serie di cambiamenti, e un aumento non indifferente della complessità rispetto all'approccio di gestione tradizionale.
+L'adozione del Data Mesh introduce una serie di cambiamenti, e un aumento non indifferente della complessità del sistema rispetto a una soluzione monolitica.
 Si richiede che ogni fonte possegga le competenze tecniche necessarie per organizzare e fornire i dati, con gli strumenti che la Self-serve Data Platform mette a disposizione.
-Inoltre l'organizzazione deve possedere una maturità tecnologica e un team sufficientemente preparato per progettare e realizzare gli strumenti necessari.
-In questo lavoro di tesi si è progettata un'architettura orientata ai servizi per la realizzazione di questi strumenti e quindi per la costruzione di una Self-serve Data Platform.
-Dopo aver studiato la letteratura esistente si è proposto un'approccio differente, che si concentrasse non tanto sugli strumenti da utilizzare ma sulle loro proprietà e su come andassero utilizzati dai team per fornire i dati al resto dell'organizzazione.
-Si è cercato quindi di definire l'architettura rimanendo fedeli ai concetti di architettura introdotti in \cite{perry_foundations_1992} focalizzandosi in nello specifico sulla spiegazione delle motivazioni dietro alle scelte fatte.
-Lo scopo dell'architettura proposta è definire le componenti che consentano ai vari nodi dell'enterprise, a cui è stata assegnata la responsabilità dei dati di loro competenza di gestirli e fornirli al resto dell'organizzazione, minimizzando la ripetizione del lavoro nei diversi domini e lo sforzo tecnico richiesto. 
+Inoltre, l'organizzazione deve possedere una maturità tecnologica e un team sufficientemente preparato per progettare e realizzare gli strumenti necessari.
+In questo lavoro di tesi si è cercato di progettare un'architettura orientata ai servizi per la realizzazione di una Self-serve Data Platform.
+Dopo aver visionato la letteratura esistente è stato proposto un'approccio differente, che si concentrasse non tanto sugli strumenti da utilizzare quanto sulle loro proprietà e su come debbano essere gestiti per creare un Data Product.
+Si è cercato di definire l'architettura rimanendo fedeli ai concetti introdotti in \cite{perry_foundations_1992}, focalizzandosi nello specifico sul razionale su cui si basano le scelte fatte.
+Lo scopo dell'architettura proposta è definire le componenti che consentano ai vari nodi dell'enterprise, a cui è stata assegnata la responsabilità di gestire i dati di loro competenza, di mantenerli e fornirli al resto dell'organizzazione, minimizzando la ripetizione del lavoro nei diversi domini e lo sforzo tecnico richiesto. 
 Il lavoro dell'architetto software è complesso e richiede un'ampia esperienza, oltre che una conoscenza approfondita del problema, delle tecnologie e delle soluzioni esistenti.
-Non disponendo dell'esperienza richiesta si è cercato di sopperire i limiti con lo studio della letteratura esistente e con il confronto con esperti del settore.
-Il lavoro non ha quindi l'ambizione di fornire una soluzione definitiva ma di iniziare una discussione su un tema che fino ad ora non è stato approfondito in ambito accademico.
-Nell'ultima parte del lavoro è stato realizzato un prototipo, che soddisfa in maniera parziale l'architettura proposta, con lo scopo di  verificare la fattibilità e mostrare alcune tecnologie o pattern utilizzabili per la realizzazione effettiva del sistema.
-La costruzione del prototipo ha inoltre permesso di rendere espliciti, di rivedere e di perfezionare, seguendo i principi di progettazione iterativa, alcuni aspetti dell'architettura utilizzando il feedback fornito dal'implementazione.
+Non disponendo di tale esperienza, si è cercato di sopperire a questo limite attraverso lo studio della letteratura esistente e il confronto con esperti del settore.
+Il lavoro non ha l'ambizione di fornire una soluzione definitiva ma di iniziare una discussione su un tema che fino ad ora non è stato particolarmente approfondito in ambito accademico.
+Si è inoltre realizzato un prototipo che soddisfa in maniera parziale l'architettura proposta, in modo da verificarne la fattibilità e mostrare alcune tecnologie o pattern utilizzabili per la realizzazione effettiva del sistema.
+La costruzione del prototipo ha inoltre permesso di rendere espliciti, di rivedere e di perfezionare alcuni aspetti dell'architettura, utilizzando il feedback fornito dall'implementazione e seguendo i principi di progettazione iterativa.
 Il prototipo è stato realizzato utilizzando tecnologie open source cercando di rendere il progetto il più possibile estendibile e replicabile.
-La tesi è organizzata nel seguente modo: nel Capitolo \ref{fondamenti teorici} sono definiti i concetti di architettura software, Domain Driven Design, Data Mesh e architettura orientata ai servizi, che costituiscono le basi teoriche su cui è fondato il lavoro.
-Nel Capitolo \ref{architetturaLogica} viene presentata l'architettura proposta; viene approfondita la necessità di creare un'architettura, i requisiti che deve presentare per soddisfare i principi del Data Mesh, la responsabilità e le motivazioni dietro alle componenti individuate per risolvere il problema.
+La tesi è organizzata nel seguente modo: nel Capitolo \ref{fondamenti teorici} sono stati definiti i concetti di architettura software, Domain Driven Design, Data Mesh e architettura orientata ai servizi, che costituiscono le basi teoriche su cui si è fondato il lavoro.
+Nel Capitolo \ref{architetturaLogica} viene presentata l'architettura proposta; viene approfondita la necessità di creare un'architettura, i requisiti che deve presentare per soddisfare i principi del Data Mesh e la responsabilità e le motivazioni dietro alle componenti individuate per risolvere il problema.
 Viene quindi effettuato un confronto con altre architetture presentate in letteratura.
-Infine nel Capitolo \ref{implementazione} viene presentata l'implementazione del prototipo, vengono mostrate le tecnologie utilizzate e descritta la realizzazione delle parti.
+Infine il Capitolo \ref{implementazione} tratta l'implementazione del prototipo,  mostrando le tecnologie utilizzate e descrivendo i motivi e le scelte dietro alla realizzazione delle parti.
 
 \chapter{Fondamenti teorici}\label{fondamenti teorici}
 In questo capitolo sono definiti i fondamenti teorici sui quali si basa questa tesi.
@@ -380,9 +387,23 @@ Infine la piattaforma si occuperà di fare in modo che le politiche e le metrich
 Nel lavoro di tesi si approfondirà l'utilizzo dell'architettura orientata ai servizi per la realizzazione di una Self-Serve Data Platform
 
 \subsection{Problematiche del Data Mesh}
-Sebbene la stesura dei principi sia recente e l'idea sia stata accolta in maniera positiva dalla comunità, sono emerse alcune criticità riguardanti alcuni concetti e soprattutto l'applicazione pratica dei principi.
-
-
+Sebbene la stesura dei principi sia recente e l'idea sia stata accolta in maniera positiva dalla comunità, sono emerse alcune criticità riguardanti soprattutto la loro applicazione pratica.
+Realizzare una Data mesh aumenta notevolmente la complessità del sistema, è quindi necessario valutare se la quantità, tipologia e complessità dei dati necessiti di una Data Mesh.
+La prima modifica da apportare, nel caso si consideri di adottare i principi del Data Mesh, è di tipo culturale; è infatti necessario che ogni team si assuma la responsabilità della gestione dei dati analitici relativi al dominio in cui lavora.
+Apportare questo cambiamento comporta, fra le altre cose, il recupero dei dati già presenti in un data warehouse o in un data lake e la loro distribuzione ai team analitici e operazionali.
+Una delle proposte di questo lavoro, per ovviare questo problema specifico, prevede l'utilizzo di sistemi di storage centralizzati, e l'utilizzo di Data Product come punto di accesso ai dati.
+Questo permetterebbe di mantenere i dati nello stesso punto, riducendo i costi e la transazione da architettura monolitica a Data Mesh.
+Stabilire e individuare i dati di cui ogni team ha la responsabilità rimane comunque un'operazione potenzialmente lunga e onerosa.
+Una volta instaurata questo tipo di cultura è necessario assicurarsi che ogni team abbia la maturità necessaria per gestire i dati in maniera corretta.
+Un errore di gestione di dati sensibili può portare a conseguenze gravi per l'organizzazione e per le parti la cui riservatezza è stata lesa.
+Inoltre, la gestione dei dati potrebbe richiedere competenze tecniche che è necessario siano presenti in tutti i team.
+Per arginare questo problema viene proposto il principio di Self-serve Data Platform.
+La creazione di una piattaforma che permetta però di gestire i dati, riducendo il carico cognitivo e le competenze tecniche necessarie, e mantenendo l'autonomia del team richiede un grande sforzo di progettazione e implementazione.
+È inoltre necessario capire in che modo progettare la piattaforma; fornire semplicemente alcuni strumenti utilizzabili per creare il Data Product può portare a una proliferazione di Data Product non interoperabili e difficili da utilizzare.
+A prescindere dalla maturità della piattaforma fornita il Data Mesh aumenta le responsabilità e il carico di lavoro dei team operazionali e analitici.
+Inoltre un minimo di ripetizione delle operazioni nei vari team, per esempio nella  scrittura di politiche o nelle trasformazioni effettuate sui dati, è inevitabile in un sistema distribuito di questo tipo.
+In ultimo, come riportato in \cite{araujo2022advancing}, non sono ancora presenti linee guida precise e accettate su come implementare o progettare la piattaforma proposta.
+Si cerca di portare con il seguente lavoro di tesi un contributo da questo punto di vista.
 
 \section{Architettura orientata ai servizi} \label{servizio}
 In questo paragrafo viene approfondita l'architettura orientata ai servizi (abbreviata a SOA, Service Oriented Architecture).
@@ -780,7 +801,8 @@ Secondo \cite{zhamak_dehgani_data_2023} infatti, un Data Product potrebbe presen
 Un'altra possibile aggiunta al metodo è il controllo sul ruolo dell'utente che la sta effettuando. 
 Questo, insieme a un sistema di autenticazione e all'adeguato supporto nel Data Product, permetterebbe di fornire solo alcune porzioni dei dati, in base alle politiche interne stabilite dal Data Product.
 Questi sono requisiti necessari nel caso il dato contenga informazioni sensibili.
-Un'altra funzionalità importante per l'interfaccia di accesso ai dati è il supporto al ``Change Data Capture'', anche detto CDC \cite{eventSourcing,petrie2018streaming}.
+Un'altra funzionalità importante per l'interfaccia di accesso ai dati è il supporto al ``Change Data Capture'', 
+anche detto CDC \cite{fowlerEventSourcing,petrie2018streaming}.
 Con CDC si intende un'insieme di pratiche che permettono di catturare il cambiamento nel sistema.
 Questo permette per esempio di ottenere aggiornamenti incrementali riguardanti i cambiamenti del dato analitico.
 Si supponga di avere un Data Product \textit{B}, che viene creato a partire dai dati conservati da Data Product \textit{A}. 
@@ -859,12 +881,13 @@ Oltre al supporto al CDC di cui si è già discusso si richiede quindi che quest
 Si insiste particolarmente su questa standardizzazione perché la prossima componente proposta per l'architettura garantisce, assunta la realizzazione delle componenti già proposte, il supporto all'aggiornamento automatico dei Data Product.
 Diversamente dalla realizzazione degli adapter per i database analitici, la realizzazione degli adapter per i database operazionali è soggetta a qualche criticità.
 Nel caso siano in uso tipologie di database operazionali diverse all'interno dell'architettura, la realizzazione degli adapter diventa un'operazione gravosa e non scalabile all'aumentare del numero di team operazionali.
-In questa situazione è necessario quindi richiedere che la realizzazione dell'adapter ricada sul team operazionale.
+In questa situazione è necessario quindi che la realizzazione dell'adapter ricada sul team operazionale.
 Ci si aspetta infatti che il team sia ben preparato sulla tecnologia del database, le specifiche e i requisiti sull'interfaccia che l'adapter dovrà esporre sono invece progettati a livello di architettura.
 In questa situazione il team operazionale, prima di realizzare l'adapter per il database operazionale dovrebbe valutare il rapporto costi benefici.
 Ai costi della costruzione dell'adapter andrebbero comparati i costi di un sistema di gestione degli aggiornamenti del dato analitico.
 Nel caso i costi dell'adapter superino di molto quelli del sistema di aggiornamento, il team operazionale può gestire in autonomia l'integrazione del Data Product con il database operazionale.
 Questo comporterà però poi la realizzazione di un sistema di ETL ad hoc per il Data Product, o comunque a uno sforzo per integrarsi con gli altri strumenti che verranno in seguito proposti dall'architettura.
+Si lascia quindi la libertà al team operazionale di valutare se realizzare l'adapter e utilizzare i restanti strumenti proposti dall'architettura, oppure se gestire in autonomia l'integrazione con il database e realizzare un sistema di ETL ad hoc, che rispetti però le interfacce proposte dall'architettura.
 Nella Figura \ref{fig:AdapterDB} vengono schematizzate le interfacce delle due tipologie di adapter. 
 
 \begin{figure}
@@ -899,6 +922,9 @@ Il file, riassumendo quanto detto in precedenza dovrebbe contenere le seguenti i
 \end{itemize}
 Un'altra componente opzionale potrebbe essere un servizio di notifica, che lavorerebbe in collaborazione col gestore degli aggiornamenti per informare i Data Product consumatori di eventuali modifiche alle fonti. 
 Questo tipo di supporto complica leggermente il Data Product, che dovrà gestire le eventuali iscrizioni ed è da valutare nel caso ci siano Data Product che necessitano di aggiornamenti in tempo reale.
+Nel caso si voglia implementare un servizio di aggiornamento in tempo reale è possibile utilizzare un sistema di messaggistica, come Apache Kafka \cite{kafka_docs}, per notificare i Data Product comunicando gli eventuali cambiamenti.
+In questo caso il Data Product che offre i dati con aggiornamento in tempo reale dovrà fornire un ulteriore interfaccia che permetta ad altri Data Product di iscriversi per ricevere le notifiche.
+Si applica poi il pattern produttore-consumatore per gestire gli aggiornamenti dei Data Product.
 Nella Figura \ref{fig:dp supporto aggiornamenti} viene mostrata una vista su un Data Product in cui vengono precisate le componenti principali e le loro integrazioni.
 In nero sono rappresentate le componenti che andrebbero implementate in autonomia da ogni Data Product in questo stadio dell'architettura.
 Si è cercato di raggruppare le funzionalità e presentare un'ipotetica divisone, anche sulla base della proposta di architettura completa, che verrà sviluppata in seguito.
@@ -990,6 +1016,7 @@ Ogni volta che un utente cerca informazioni su un Data Product il registro le ot
 Nel caso si preveda una grossa quantità di Data Product, il registro andrebbe progettato per facilitarne la ricerca, integrando per esempio meccanismi di ranking e ricerca semantica.
 Il registro dei Data Product potrebbe essere utilizzato anche per raccogliere metriche sull'utilizzo e sulla soddisfazione dei clienti di uno specifico dato.
 Questo permetterebbe di fornire un feedback al Data Product Owner e al team di governance sull'andamento di un Data Product.
+Sulla raccolta e sulla gestione di metadati all'interno di enterprise sono state sviluppate diverse soluzioni, alcuni esempi di tecnologie utilizzabili per implementare il registro sono Apache Atlas e DataHub \cite{dataHub, atlas_docs}.
 
 \subsection{Servizio di trasformazione e aggregazione dei dati}
 L'ultimo elemento necessario per soddisfare i requisiti richiesti dall'architettura è un servizio che effettui aggregazioni e trasformazioni sui dati.
@@ -1002,12 +1029,14 @@ Il team con la responsabilità di realizzare il Data Product dovrà decidere e c
 Si propone che la piattaforma fornisca un servizio che supporti queste operazioni, con l'obbiettivo di facilitare la codifica e l'esecuzione delle trasformazioni richieste.
 In particolare, il servizio dovrà garantire una flessibilità sufficiente per permettere al team di effettuare operazioni specifiche rispetto al dato conservato.
 Inoltre dovrà integrarsi correttamente con il servizio di aggiornamento, che fornirà i dati grezzi, e con l'interfaccia esposta dagli adapter dei database analitici, che salveranno le informazioni elaborate.
+Infine dovrà occuparsi della distribuzione del carico e della gestione delle risorse hardware necessarie per eseguire in maniera efficiente le trasformazioni. 
 La suddivisione in servizi proposta è solo una di quelle possibili. 
 Un'altra possibilità potrebbe prevedere un unico servizio con le responsabilità del gestore degli aggiornamenti e della  trasformazione e aggregazione del dato, e che si occupi quindi di effettuare l'intero processo di ETL.
 Si è mantenuto questo servizio come ultimo tra quelli non opzionali forniti dall'architettura in quanto si ritiene che questa sia l'operazione più difficile da generalizzare.
 Infatti le operazioni di trasformazione e di aggregazione del dato sono specifiche del dominio e potrebbero variare molto nei diversi Data Product.
 Nella pratica quello che probabilmente garantirà la piattaforma è l'adozione di una tecnologia pensata per effettuare ETL, fornendo un supporto per alcune operazioni e l'integrazione con le altre componenti.
-Questo avrà un impatto marginale sul team associato al Data Product, che avrà comunque il compito di imparare a utilizzare la tecnologia specifica e utilizzarla per definire le trasformazioni necessarie.
+A prescindere dal tipo di operazioni il servizio dovrebbe rendere il più possibile trasparente la suddivisione del lavoro e la gestione delle risorse, in modo che non sia necessario per i team responsabili del Data Product di preoccuparsi di questi aspetti.
+Si ritiene che questo servizio, rispetto agli altri proposti, avrà un impatto marginale sul team associato al Data Product, che avrà comunque il compito di imparare a utilizzare la tecnologia specifica e utilizzarla per definire le trasformazioni necessarie.
 
 \subsection{Enterprise Service Bus}
 Si propone come componente opzionale l'adozione di un Enterprise Service Bus.
@@ -1033,8 +1062,9 @@ Fino ad ora sono stati individuati i componenti mostrati nella Figura \ref{fig:a
 Arrivati a questo stadio dell'architettura è possibile gestire il Data Product lavorando con gli artefatti di cui dispone.
 Ogni artefatto viene passato a un servizio specifico fornito dalla piattaforma per specificare le informazioni relative al domino e gli end-point degli altri servizi con cui deve interagire.
 Si propone, per concludere l'architettura, di creare una componente che data una versione ridotta degli artefatti vada a istanziare i servizi necessari per creare un Data Product.
+Il servizio dovrebbe quindi occuparsi dell'hosting dei servizi, gestendo eventuali macchine virtuali, container e le risorse hardware necessarie per garantire il loro funzionamento. 
 Dato che ogni Data Product presenterà le stesse componenti e che sarà il servizio di creazione a creare le istanze degli altri servizi avrà la responsabilità di inserire negli artefatti le informazioni per l'integrazione.
-La responsabilità di quest'ultima componente sarà quindi, dati gli artefatti creare il Data Product, assicurarsi eventualmente che questo sia integrato con l'ESB e che i suoi metadati siano mostrati nel registro.
+La responsabilità di quest'ultima componente sarà quindi, dati gli artefatti, creare il Data Product, assicurarsi eventualmente che questo sia integrato con l'ESB e che i suoi metadati siano mostrati nel registro.
 
 \section{Osservazioni sull'architettura proposta}
 Nella Figura \ref{fig:architettura completa} viene proposta una vista completa dell'architettura.
@@ -1053,6 +1083,7 @@ Il risultato finale prevede che i team forniscano le seguenti informazioni:
     \item le operazioni di trasformazione e aggregazione da applicare ai dati ricevuti dalle fonti.
 \end{itemize}
 Sono responsabilità dei team la manutenzione e l'aggiornamento di queste informazioni, la realizzazione della Data Mesh viene invece delegata alla piattaforma.
+L'unica componente che potrebbe richiedere uno sforzo maggiore ai team responsabili dei Data Product è l'integrazione, tramite la realizzazione di un adapter, con le fonti di dati dei sistemi operazionali, che potrebbero rendere l'architettura nel complesso poco scalabile se venissero realizzati centralmente.
 Si ritiene quindi che la proposta sia in linea con il principio di Domain Ownership, in quanto i team hanno la responsabilità  e il controllo sul dato analitico.
 Il registro, l'ESB, la presenza di componenti standard e la gestione interna degli artefatti facilitano la fruizione e l'autonomia, permettendo la creazione di un Data Product.
 La possibilità di definire policy globali, l'accesso alle policy locali e la standardizzazione garantita dall'utilizzo delle stesso componenti all'interno dell'architettura permettono di soddisfare, dal punto di vista tecnico, il principio di Federated Computational Governance.
@@ -1072,7 +1103,7 @@ Si è rimasti invece abbastanza fedeli alle proposte e ai pattern definiti nel l
 Il secondo lavoro, \cite{majchrzak2023data}, è sempre un libro, e si pone l'obbiettivo di facilitare l'adozione dei principi del Data Mesh in un'organizzazione enterprise.
 Il libro lavora principalmente in termini di processi e propone, attraverso diversi esempi, strategie per la realizzazione di una Data Mesh.
 Nella parte finale vengono proposte alcune architetture, utilizzando tecnologie specifiche e concentrandosi sulla realizzazione di un ''Minimum Viable Product``.
-A differenza dell'approccio adottato in questo capitolo, il libro si focalizza sull'applicazione pratica e le proposte di architettura vengono presentate solo tramite esempi.
+A differenza dell'approccio adottato in questo capitolo, il libro si focalizza sull'applicazione pratica e le proposte di architettura vengono presentate solo tramite esempi di tecnologie utilizzabili per svolgere il compito.
 Il terzo lavoro, \cite{machado2021data}, è un articolo che definisce un'architettura concettuale per la creazione di una Data Mesh.
 Si tratta del lavoro più simile a quello proposto in questo capitolo.
 L'articolo, partendo dalla mancanza di altre proposte di questo genere e dato che il libro \cite{dehghani_data_2022} rimane a un livello di astrazione molto alto, cerca di porre le basi per la creazione di un'architettura concettuale per la creazione di una Data Mesh.
@@ -1104,47 +1135,45 @@ Il principio di vincolo minimo impone che l'architettura fornisca il minor numer
 Provare a progettare e in seguito a implementare un'architettura permette di capire se i vincoli individuati sono sufficienti per definire le componenti e se l'architettura nel complesso risulta realizzabile.
 Uno dei motivi per cui si è deciso di implementare alcune componenti era quindi di verificare la fattibilità di quanto proposto nel capitolo precedente.
 Mostrando come sono state realizzate alcune componenti questo capitolo fornisce un esempio concreto di implementazione delle proposte fatte.
-Si spera che questo processo possa anche aiutare a risolvere eventuali dubbi riguardanti le proposte del capitolo precedente.
-Infine l'implementazione di alcune componenti ha permesso di mostrare alcune delle tecnologie utilizzabili per costruire l'architettura. 
+Infine, l'implementazione di alcune componenti ha permesso di mostrare alcune delle tecnologie utilizzabili per costruire l'architettura. 
 Per questioni di tempo non è stato possibile realizzare l'intero sistema; ne sono state quindi selezionate solo alcune parti.
-Si è deciso di seguire l'approccio proposto nel libro \cite{majchrzak2023data}, che consiglia di costruire un Data Product in maniera incrementale, partendo da un ``Minimum Viable Product'' (MVP) che garantisca semplicemente l'accesso ai dati analitici.
-A differenza di quanto proposto nel libro però non si è creata un'architettura specifica per il Data Product, ma si è partiti da quanto definito nel capitolo precedente.
-Nonostante la costruzione di un'architettura su misura per ogni Data Product permetta un alto livello di personalizzazione si ritiene che l'approccio possa portare a una scarsa interoperabilità, e complessivamente lo si ritiene non scalabile.
+Si è deciso di seguire l'approccio proposto in \cite{majchrzak2023data}, che consiglia di costruire un Data Product in maniera incrementale, partendo da un ``Minimum Viable Product'' (MVP) che garantisca semplicemente l'accesso ai dati analitici.
+A differenza di quanto proposto, però, non si è creata un'architettura specifica per il Data Product, ma si è partiti da quanto definito nel capitolo precedente.
+Nonostante la costruzione di un'architettura su misura per ogni Data Product permetta un alto livello di personalizzazione, si ritiene che l'approccio possa portare a una scarsa interoperabilità, e complessivamente lo si ritiene non scalabile.
 Le componenti realizzate e descritte in questo capitolo permettono l'accesso ai dati analitici attraverso la realizzazione parziale di un Data Product; sono però progettate in modo da essere facilmente riutilizzabili per crearne degli altri. 
 Per semplicità si è deciso di portare come esempio l'implementazione di un Data Product fittizio.
 Lo scopo del Data Product che si è deciso di sviluppare è presentare a diverse tipologie di utenti le informazioni contenute in alcune ricette mediche.
 Si è deciso di lavorare simulando informazioni di questo tipo perché permettono di approfondire l'utilizzo di politiche per limitare l'accesso ai dati sensibili utilizzando il ruolo degli utenti.
 Basandosi sull'architettura proposta le componenti necessarie per effettuare queste operazioni sono le seguenti: il mediatore, un adapter per l'accesso a un database analitico, il gestore delle politiche, il gestore dell'accesso ai dati analitici, ed eventualmente un ESB per facilitare la comunicazione delle altre componenti.
-Nelle sezioni successive verranno presentate le tecnologie utilizzate, le caratteristiche del Data Product scelto e  verrà descritta nel dettaglio l'implementazione delle componenti e la realizzazione del sistema complessivo.
+Nei paragrafi successivi verranno presentate le tecnologie utilizzate e le caratteristiche del Data Product scelto, e  verrà descritta nel dettaglio l'implementazione delle componenti e la realizzazione del sistema complessivo.
 
 \section{Scelta delle tecnologie}
 In questo paragrafo vengono spiegate le tecnologie adottate.
 Si è deciso di costruire il Data Product utilizzando componenti open source per facilitare la riproduzione del lavoro.
 Come linguaggio di programmazione è stato utilizzato Java, che garantisce un'integrazione semplice con le tecnologie utilizzate.
-Verranno ora approfondite in ordine le tecnologie adottate per la valutazione delle politiche, il mediatore, il servizio di autenticazione e infine il database utilizzato per la conservazione dei dati analitici.
+Nei paragrafi successivi verranno approfonditi in ordine le tecnologie adottate per la valutazione delle politiche, il mediatore, il servizio di autenticazione e infine il database utilizzato per la conservazione dei dati analitici.
 
 \subsection{Opa e Opal per la gestione delle politiche}\label{opa_opal}
 Costruire da zero un servizio per la valutazione delle politiche può essere un'operazione complessa e dispendiosa.
 In primo luogo è necessario definire un linguaggio comune, che sia abbastanza flessibile da permettere la definizione di politiche in domini diversi, ma che possa al contempo essere valutabile in automatico.
 Una volta fissato il linguaggio è necessario costruire un meccanismo di valutazione delle politiche; questo deve valutare se una richiesta contente alcuni dati sia conforme con le politiche definite nel linguaggio comune. 
-Il meccanismo di valutazione deve essere sviluppato, testato, mantenuto, e deve garantire un livello di sicurezza sufficiente per regolare l'accesso a dati sensibili.
+Il meccanismo di valutazione deve essere sviluppato, verificato, mantenuto, e deve garantire un livello di sicurezza sufficiente per regolare l'accesso a dati sensibili.
 Date le risorse necessarie alla realizzazione di un sistema di questo tipo si è deciso di utilizzare un servizio esistente, chiamato Open Policy Agent (OPA).
-OPA è un motore di valutazione delle politiche open source\cite{noauthor_open_nodate}, che permette di definire le politiche utilizzando un linguaggio chiamato Rego.
-Rego è un linguaggio ad alto livello basato su logica dichiarativa, consente di esprimere le politiche in maniera chiara e concisa.
+OPA è un motore di valutazione delle politiche open source \cite{noauthor_open_nodate}, che permette di definire le politiche utilizzando un linguaggio chiamato Rego.
+Rego è un linguaggio ad alto livello basato su logica dichiarativa, che consente di esprimere le politiche in maniera chiara e concisa.
 OPA lavora con due file: un file delle politiche, in cui sono rese esplicite le regole da controllare, e un file dei dati, contente le informazioni necessarie per effettuare i controlli richiesti.
 Una volta creati i due file è possibile istanziare un servizio OPA a cui vengono inviate delle richieste.
-Il servizio le valuta utilizzando le politiche e i dati forniti e ritorna, sulla base di questi, una risposta.
-Il formato comunemente utilizzato per la richiesta e per fornire i dati necessari alla valutazione delle politiche è il JSON.
-Anche la risposta del servizio viene fornita sotto forma di JSON; questo garantisce una certa flessibilità sul tipo di richieste e di risposte che il servizio può ricevere e  fornire.
-Nella Figura\ref{OPA image} viene schematizzato il funzionamento di OPA
-\begin{figure}[H]
+Il servizio le valuta utilizzando le politiche e i dati forniti e restituisce, sulla base di questi, una risposta.
+Il formato comunemente utilizzato per la richiesta e per fornire i dati necessari alla valutazione delle politiche è JSON.
+Anche la risposta del servizio viene fornita sotto forma di un file JSON; questo garantisce una certa flessibilità sul tipo di richieste e di risposte che il servizio può ricevere e  fornire.
+Nella Figura \ref{OPA image} viene schematizzato il funzionamento di OPA.
+\begin{figure}[t]
     \centering
     \includegraphics[width= 0.75\linewidth]{immagini/Opa funzionamento.png}
-    \caption{Schema sul funzionamento ad alto livello di un servizio Open Policy Agent}
+    \caption{Schema del funzionamento ad alto livello di un servizio Open Policy Agent}
     \label{OPA image}
 \end{figure}
 Questo strumento fornisce il supporto necessario per realizzare il gestore delle politiche: fissa il linguaggio globale per le politiche, permette agli sviluppatori del Data Product di definire le proprie politiche locali sotto forma di artefatti e permette, date le informazioni sull'utente che effettua l'accesso, di fornire una risposta che contenga i dati a cui l'utente può accedere.
-
 L'utilizzo di OPA per consentire la valutazione e l'esecuzione delle politiche è stato ampiamente approfondito in \cite{caronni2022framework}.
 Rimangono però da soddisfare i requisiti del team di governance, che richiedono l'applicazione di politiche globali e la possibilità di modificare le politiche locali di ogni Data Product.
 Per risolvere il primo problema è possibile istanziare un servizio OPA distinto che gestisca le politiche globali.
@@ -1164,21 +1193,21 @@ OPAL garantisce che un cambiamento alle politiche o ai dati, mantenute dal team 
 
 Si utilizza la Figura \ref{funzionamento_OPAL} per descrivere brevemente il funzionamento del servizio.
 Inizialmente viene creato un server OPAL che si collega a tutte le fonti di politiche, sia locali che globali, e a tutte le fonti di dati.
-La Figura mostra come il server OPAL possa per esempio sincronizzarsi con alcuni file presenti in una repository github.
+La figura mostra come il server OPAL possa per esempio sincronizzarsi con alcuni file presenti in una repository github.
 Le repository che mantengono le politiche locali dovranno garantire l'accesso al file di policy al team del Data Product corrispondente e al team di governance.
 OPAL implementa poi un'architettura publish-subscriber;
 i server OPAL controllano le modifiche ai file a cui sono ``collegati'' e le pubblicano su alcuni ``topic''.
 Ogni client OPAL si iscrive a uno o più topic e ha associato un servizio OPA.
 Il client OPAL fornisce al servizio OPA i file corrispondenti ai topic a cui il client è iscritto; il servizio OPA utilizzerà questi file, che conterranno politiche o dati, per valutare le richieste.
-Nel caso un file venga modificato, il server OPAL notificherà tutti i client OPAL iscritti al topic relativo a quel file; questi si occuperanno di fornite i nuovi file al servizio OPA, che potrà continuare a lavorare mantenendo le politiche aggiornate.
+Nel caso un file venga modificato, il server OPAL notificherà tutti i client OPAL iscritti al topic relativo a quel file; questi si occuperanno di fornire i nuovi file al servizio OPA, che potrà continuare a lavorare mantenendo le politiche aggiornate.
 Per consentire la presenza di una federated computational governance, il server OPAL dovrà sincronizzarsi sui cambiamenti di tutti i file di policy e tutti i file contenti i dati necessari.
 Ogni Data Product avrà un client OPAL, che si registrerà sui topic del server relativi alle politiche locali del Data Product e alle politiche globali.
-Nel caso gli artefatti relativi a queste politiche venissero modificati il client OPAL si occuperà di mantenere aggiornato il servizio OPA associato.
+Nel caso gli artefatti relativi a queste politiche venissero modificati, il client OPAL si occuperà di mantenere aggiornato il servizio OPA associato.
 L'utilizzo di questa tecnologia dovrebbe garantire la soddisfazione dei requisiti individuati, a livello di architettura, per quanto riguarda il gestore delle politiche.
 Data la presenza di un solo Data Product nell'implementazione è stato utilizzato unicamente un servizio OPA.
 
 \subsection{Wso2 per mediare l'accesso ai dati e fornire un servizio di autenticazione}
-Quando un utente effettua una richiesta a un  Data Product è necessario che venga verificata la sua identità.
+Quando un utente effettua una richiesta a un Data Product, è necessario che venga verificata la sua identità.
 Infatti la valutazione delle politiche per l'accesso ai dati richiede le informazioni associate all'identità dell'utente.
 Questo processo richiede la presenza di un servizio centralizzato che mantenga le informazioni necessarie per ogni utente e un meccanismo di autenticazione che garantisca l'accesso dopo che è stata verificata l'identità.
 Per motivi di sicurezza sarebbe poi opportuno che alcuni servizi, interni al Data Product, siano accessibili solo da altri servizi.
@@ -1191,51 +1220,51 @@ Permette quindi di registrare nuovi utenti, richiedendo e memorizzando le inform
 Inoltre si occupa di verificare le credenziali degli utenti  che tentano l'accesso, e gestisce l'autenticazione utilizzando protocolli come OAuth2.
 Presenta poi un complesso sistema per la gestione dei permessi, permettendo di definire ruoli e di associare a ogni ruolo determinati permessi.
 L'Identity Server implementa quanto richiesto per il servizio di autenticazione, individuato in fase di progettazione.
-Oltre all'Identity Server, che permette l'autenticazione, per regolare l'accesso a un Data Product è necessario utilizzare un mediatore, che si integri con il servizio di autenticazione, per gestire le richieste degli utenti.
-Si utilizza un servizio di Wso2 chiamato Api Manager per l'implementazione del mediatore.
-L'Api Manager permette tramite configurazioni di gestire l'accesso a un servizio specifico.
+Oltre all'Identity Server, che permette l'autenticazione, per regolare l'accesso a un Data Product è necessario utilizzare un mediatore che si integri con il servizio di autenticazione, per gestire le richieste degli utenti.
+Si utilizza un servizio di Wso2 chiamato API Manager per l'implementazione del mediatore.
+L'API Manager permette tramite configurazioni di gestire l'accesso a un servizio specifico.
 In particolare si integra con l'Identity Server per effettuare l'autenticazione, permette di esporre dei punti di accesso che vengono poi mappati su servizi interni e facilita la gestione del ciclo di vita dei servizi.
-Quando un utente effettua una richiesta a un servizio, l'Api Manager contatta l'identity server per verificarne l'identità; è possibile anche fare in modo che le informazioni legate all'identità dell'utente vengano inoltrate al servizio mediato.
-Il Wso2 Api Manager fornisce anche un meccanismo di controllo dei tipi nella richiesta e permette di raccogliere metriche sull'utilizzo dei servizi. 
+Quando un utente effettua una richiesta a un servizio, l'API Manager contatta l'identity server per verificarne l'identità; è possibile anche fare in modo che le informazioni legate all'identità dell'utente vengano inoltrate al servizio mediato.
+Il Wso2 API Manager fornisce anche un meccanismo di controllo dei tipi nella richiesta e permette di raccogliere metriche sull'utilizzo dei servizi. 
 Questa tecnologia facilita quindi la realizzazione di un mediatore che soddisfi i requisiti individuati nel capitolo precedente.
-Il funzionamento del Wso2 Api Manager è schematizzato nella Figura \ref{funzionamento_api_manager}.
+Il funzionamento del Wso2 API Manager è schematizzato nella Figura \ref{funzionamento_api_manager}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{immagini/wso2 apim schema.png}
-    \caption{Schema sul funzionamento del Wso2 Api Manager}
+    \caption{Schema sul funzionamento del Wso2 API Manager}
     \label{funzionamento_api_manager}
 \end{figure}
 Una volta appreso il funzionamento della tecnologia, a meno che non siano richieste operazioni particolari, l'API manager permette di realizzare un mediatore in pochi passaggi.
-Dato che lo sforzo di creazione del mediatore tramite lo strumento è contenuto è possibile mediare l'accesso a tutti i servizi forniti dalla Self-Serve Data Platform.
+Dato che lo sforzo di creazione del mediatore tramite lo strumento è contenuto, è possibile mediare l'accesso a tutti i servizi forniti dalla Self-Serve Data Platform.
 Questo permette di controllare l'accesso ai servizi ``interni'' al Data Product, soddisfacendo uno dei requisiti individuati per l'ESB.
-Infine, il Wso2 Api Manager crea un catalogo dei servizi che vengono mediati. 
-Questo catalogo non soddisfa appieno i requisiti individuati per il registro dei Data Product, principalmente perché a differenza di alcune alternative, come DataHub \cite{datahub}, non è pensata per la presentazione di dati.
+Infine, il Wso2 API Manager crea un catalogo dei servizi che vengono mediati. 
+Questo catalogo non soddisfa appieno i requisiti individuati per il registro dei Data Product, principalmente perché a differenza di alcune alternative, come DataHub \cite{dataHub}, non è pensato per la presentazione di dati.
 Il catalogo fornito permette però di trovare facilmente gli end-point dei vari servizi; inoltre nel caso un servizio debba cambiare l'indirizzo fisico dovrà riportare la modifica solo nella configurazione dell'API manager, mantenendo inalterata l'integrazione con gli altri componenti.
 Questo, insieme al supporto fornito per il versioning dei servizi fornito dal API manager, diminuisce la resistenza al cambiamento dei servizi. 
 Infine, la suite Wso2 fornisce anche uno strumento chiamato micro-integrator, che permette di specificare e gestire politiche più complesse di instradamento delle richieste.
 Questo strumento non è stato utilizzato nell'implementazione, ma potrebbe essere utile per la realizzazione di un ESB.
-La suite Wso2 fornisce un supporto adeguato la realizzazione di alcune componenti individuate; di contro si tratta di un prodotto complesso e non sempre intuitivo.
+La suite Wso2 fornisce un supporto adeguato per la realizzazione di alcune componenti individuate; di contro si tratta di un prodotto complesso e non sempre intuitivo.
 La community, per quanto tendenzialmente entusiasta, riporta alcune perplessità sulla documentazione, che spesso non fornisce esempi completi o aggiornati.
 In una situazione reale si consiglia quindi di valutare l'adozione considerando il tempo necessario per formare il team sulla tecnologia.
 
-\subsection{postgresql}
-per il salvataggio dei dati analitici si è deciso di utilizzare postgresql.
-viene definito nella documentazione del sito come segue: ``postgresql is a powerful, open source object-relational database system that uses and extends the sql language''\cite{noauthor_postgresql_nodate}.
-le motivazioni per cui si è scelto di utilizzare postgresql sono le seguenti:
+\subsection{Postgresql}
+Per il salvataggio dei dati analitici si è deciso di utilizzare Postgresql.
+Viene definito nella documentazione del sito come segue: ``Postgresql is a powerful, open source object-relational database system that uses and extends the SQL language'' \cite{noauthor_postgresql_nodate}.
+le motivazioni per cui si è scelto di utilizzare Postgresql sono le seguenti:
 \begin{itemize}
-    \item: postgresql è un database open source,
+    \item: Postgresql è un database open source,
     \item viene utilizzato in molte applicazioni e ha un vasto supporto,
     \item è un database relazionale, che risulta più familiare a un maggior numero di sviluppatori,
-    \item si integra facilmente con java, il linguaggio di programmazione utilizzato per l'implementazione.
+    \item si integra facilmente con Java, il linguaggio di programmazione utilizzato per l'implementazione.
 \end{itemize}
-Nell'implementazione proposta sono state utilizzate soltanto una piccola frazione delle funzionalità messe a disposizione del database.
+Nell'implementazione proposta è stata utilizzata soltanto una piccola frazione delle funzionalità messe a disposizione del database.
 In un'architettura reale bisognerà valutare, in base ai requisiti e alle conoscenze del team, quale o quali database utilizzare per la conservazione dei dati analitici.
 Nel Data Product che verrà implementato è sufficiente che il database permetta di salvare i dati in maniera persistente e che sia possibile effettuare delle query per estrarre i dati analitici conservati. 
-La gestione degli accessi, sebbene sia una feature messa a disposizione da PostgreSQL, è stata gestita dall'adapter che utilizzerà OPA; le motivazioni di questa scelta verranno discusse nella sezioni successive.
-Sebbene si ritenga che PostgreSQL sia una scelta adeguata per il salvataggio di dati analitici non la si considera una tecnologia fondamentale per la definizione dell'architettura.
+La gestione degli accessi, sebbene sia una feature messa a disposizione da PostgreSQL, è stata gestita dall'adapter che utilizzerà OPA; le motivazioni di questa scelta verranno discusse nei paragrafi successivi.
+Sebbene si ritenga che PostgreSQL sia una scelta adeguata per il salvataggio di dati analitici, non la si considera una tecnologia fondamentale per la definizione dell'architettura.
 Verranno invece approfondite l'interfaccia e le funzionalità messe a disposizione dall'adapter, che si integrerà con il database.
 \section{Descrizione del Data Product}\label{caratteristicheDP}
-Come già accennato nel paragrafo \ref{implementazione} per mostrare l'implementazione delle componenti proposte si è realizzato un Data Product fittizio.
+Come già accennato nel Paragrafo \ref{implementazione}, per mostrare l'implementazione delle componenti proposte si è realizzato un Data Product fittizio.
 Gli obbiettivi principali individuati per una Self-serve Data Platform sono: facilitare la creazione di Data Product, facilitare la consultazione di Data Product e consentire il controllo sui Data Product a livello di governance. 
 Dato che queste operazioni ruotano tutte attorno al concetto di Data Product si è deciso, per mostrare come realizzare alcuni strumenti, di crearne uno.
 Il Data Product realizzato sarà quindi un pretesto per mostrare la realizzazione di alcuni servizi generali, indipendenti dal suo dominio.
@@ -1243,7 +1272,7 @@ Si mostrerà anche come configurare gli strumenti e come scrivere le politiche r
 Non avendo a disposizione dati reali all'interno di un'architettura enterprise si è deciso di simulare un Data Product che permetta di accedere a delle ricette mediche. 
 Si è deciso di utilizzare dati sensibili perché questo permette di approfondire l'utilizzo di politiche per garantire un'accesso differenziato al dato.
 Le politiche non vengono dunque utilizzate unicamente per consentire o negare l'accesso ai dati ma per limitarne la fruizione in base al ruolo dell'utente. 
-Vengono ora definiti i ruoli degli utenti che lavoreranno con il Data Product e la tipologia di dati conservati.  
+Nel seguito vengono definiti i ruoli degli utenti che lavoreranno con il Data Product e la tipologia di dati conservati.  
 A ogni ricetta si è pensato di associare le seguenti informazioni:\begin{itemize}
     \item codice identificativo della ricetta,
     \item codice fiscale del paziente,
@@ -1261,11 +1290,11 @@ I ruoli pensati per gli utenti sono i seguenti:
     \item paziente, può accedere alle proprie ricette, per discriminare i dati ai quali può accedere verrà utilizzato il suo codice fiscale,
     \item medico, può accedere alle ricette che ha prescritto, anche in questo caso i dati vengono filtrati sulla base del codice fiscale,
     \item garante della privacy, può accedere a tutti i dati,
-    \item data scientist, può accedere solamente alle informazioni non sensibili presenti in tutte le ricette, in particolare al codice medico della ricetta, alle date  di creazione e ultima modifica, alla priorità e al testo della ricetta.  
-    \item Data Product owner, può accedere ai dati al fine di modificarli o di creare un'altro Data Product
+    \item data scientist, può accedere solamente alle informazioni non sensibili presenti in tutte le ricette, in particolare al codice medico della ricetta, alle date  di creazione e ultima modifica, alla priorità e al testo della ricetta,  
+    \item Data Product owner, può accedere ai dati al fine di modificarli o di creare un altro Data Product.
 \end{itemize}
-Nella sua forma più essenziale quindi questo Data Product consente a tipologie di utenti differenti di accedere a dati riguardanti ricette mediche.
-Questo è un'esempio di Data Product alla fonte, che potrebbe poi essere utilizzato da altri Data Product per effettuare analisi sui dati conservati.
+Nella sua forma più essenziale, quindi, questo Data Product consente a tipologie di utenti differenti di accedere a dati riguardanti ricette mediche.
+Questo è un esempio di Data Product alla fonte, che potrebbe poi essere utilizzato da altri Data Product per effettuare analisi sui dati conservati.
 
 \section{Descrizione delle componenti realizzate}
 In questo paragrafo viene descritta la realizzazione e/o la configurazione di alcune componenti individuate nel capitolo precedente.
@@ -1274,38 +1303,39 @@ Si inizia quindi descrivendo il mediatore e il servizio di autenticazione, poi s
 La descrizione di alcune componenti non sarà perfettamente aderente a quanto descritto nel capitolo precedente; questo è dovuto al fatto che la realizzazione delle stesse ha portato a riflettere sull'architettura e modificarne alcune parti.
 
 \subsection{Mediatore e servizio di autenticazione}
-Come già accennato nel paragrafo sulle tecnologie si è utilizzata la suite Wso2 per la realizzazione del mediatore e del servizio di autenticazione.
-Il mediatore è stato realizzato utilizzando il Wso2 Api Manager, che permette di mediare l'accesso ai servizi.
+Come già accennato nel paragrafo sulle tecnologie, si è utilizzata la suite Wso2 per la realizzazione del mediatore e del servizio di autenticazione.
+Il mediatore è stato realizzato utilizzando il Wso2 API Manager, che permette di mediare l'accesso ai servizi.
 In particolare sono stati creati due tipi di mediatori: uno per l'accesso al Data Product e uno per l'accesso ai servizi interni.
 Il mediatore per il Data Product si occuperà di inoltrare al gestore dell'accesso ai dati analitici una richiesta di lettura dei dati effettuata da un utente.
-Wso2 Api Manager permette di definire l'API da esporre all'utente, e come mappare la richiesta corrispondente sul servizio interno. 
-Nel lavoro di tesi sono state utilizzate delle Web Api, cercando di aderire all'architettura REST.
-La richiesta esposta dall'Api Manager è una GET, che come parametro opzionale permette di inserire le informazioni necessarie per effettuare un aggiornamento incrementale.
+Wso2 API Manager permette di definire l'API da esporre all'utente, e come mappare la richiesta corrispondente sul servizio interno. 
+Nel lavoro di tesi sono state utilizzate delle Web API, cercando di aderire all'architettura REST.
+La richiesta esposta dall'API Manager è una GET, che come parametro opzionale permette di inserire le informazioni necessarie per effettuare un aggiornamento incrementale.
 L'API manager controllerà che la richiesta contenga un token di autenticazione e contatterà l'identity server per verificarne la validità.
 Infine l'API manager consente, se configurato correttamente, di inoltrare al servizio interno le informazioni sull'utente che ha effettuato la richiesta. 
 Queste informazioni vengono definite e gestite dall'identity server, secondo lo standard OpenID.
 L'identity server ha quindi il compito di inoltrare all'API manager queste informazioni e di garantire che vengano inserite dagli utenti in fase di registrazione.
-Quando viene effettuata una richiesta all'identity server questo codifica e trasmette le informazioni dell'utente sotto forma di Java Web Token (JWT), \cite{jwt_documentation}, un formato che permette di comunicare informazioni e credenziali in maniera sicura.
+
+Quando viene effettuata una richiesta all'identity server questo codifica e trasmette le informazioni dell'utente sotto forma di Java Web Token (JWT) \cite{jwt_documentation} un formato che permette di comunicare informazioni e credenziali in maniera sicura.
 Il diagramma di sequenza, illustrato nella Figura \ref{funzionamento mediatore} riassume le comunicazioni necessarie per garantire l'accesso ai dati analitici.
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.5\linewidth]{immagini/Funzionamento mediatore dati analitci.png}
+    \includegraphics[width = 0.53\linewidth]{immagini/Funzionamento mediatore dati analitci.png}
     \caption{Diagramma di sequenza riguardante il le interazioni col mediatore per l'accesso ai dati analitici}
     \label{funzionamento mediatore}
 \end{figure}
 Il mediatore per i servizi interni funziona in maniera simile, ma possiede dei requisiti di accesso più stringenti e non richiede l'inoltro delle informazioni sull'utente al servizio.
 L'API manager manderà infatti una richiesta al servizio interno solo se questa è stata effettuata da un ``utente'' con il ruolo speciale di Data Product.
-Per ogni Data Product sarà creato un'utente corrispondente nell'Identity Server, e le credenziali di questo verranno utilizzate dai servizi per comunicare tra loro.
+Per ogni Data Product sarà creato un utente corrispondente nell'Identity Server, e le credenziali di questo verranno utilizzate dai servizi per comunicare tra loro.
 In questo modo si garantisce che i servizi interni siano accessibili solo da altri servizi.
-Riassumendo sono state configurate due tipologie di mediatori che permettono di mediare l'accesso ai servizi interni e al gestore delle richieste analitiche.
+Riassumendo, sono state configurate due tipologie di mediatori che permettono di mediare l'accesso ai servizi interni e al gestore delle richieste analitiche.
 E' stato poi configurato l'Identity server, creando i ruoli e le informazioni da mantenere per ogni ruolo.
 Infine, sempre nell'Identity server, sono stati stabiliti quali attributi dell'utente dovessero essere inoltrati sotto forma di JWT in seguito a una richiesta.
 Per effettuare quest'ultima operazione sono state ri-implementate in Java un paio di classi di Wso2.
 
 \subsection{Gestore dell'accesso ai dati analitici}
-Viene ora descritta l'implementazione del Gestore dell'accesso ai dati analitici.
+In questo paragrafo viene descritta l'implementazione del gestore dell'accesso ai dati analitici.
 L'obbiettivo del servizio è fornire dati analitici agli utenti.
-Il servizio è stato realizzato utilizzando Java 11, per una maggiore compatibilità con Wso2; in aggiunta alle librerie standard sono state utilizzate le librerie riportate nella tabella \ref{tab:dependencies}.
+Il servizio è stato realizzato utilizzando Java 11, per una maggiore compatibilità con Wso2; in aggiunta alle librerie standard sono state utilizzate le librerie riportate nella Tabella \ref{tab:dependencies}.
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|}
@@ -1317,14 +1347,14 @@ Il servizio è stato realizzato utilizzando Java 11, per una maggiore compatibil
     Gson & 2.8.9 \\
     \hline
 \end{tabular}
-\caption{Dipendenze in Java delle librerie utilizzate dal gestore dell'accesso ai dati analitici}
+\caption{Dipendenze in Java delle librerie utilizzate dal gestore dell'accesso ai dati analitici.}
 \label{tab:dependencies}
 \end{table}
 Le librerie servono per facilitare la creazione di una web API e per la gestione dei dati in formato JSON.
 Per soddisfare la richiesta dell'utente il gestore dei dati analitici deve lavorare con altri servizi.
 Le informazioni sugli end-point dei servizi con cui deve interagire sono state inserite in alcuni file di configurazione.
 All'avvio del servizio vengono richieste le credenziali del Data Product owner, che effettuerà l'accesso come utente con il ruolo speciale di Data Product.
-Il servizio di autenticazione, nel caso le credenziali siano corrette, ritorna un token di accesso.
+Il servizio di autenticazione, nel caso le credenziali siano corrette, restituisce un token di accesso.
 Il token verrà utilizzato per effettuare tutte le richieste ai servizi interni.
 Il diagramma di sequenza, illustrato nella Figura \ref{fig:sequenza dati analitici}, mostra le interazioni necessarie per fornire all'utente i dati analitici.
 \begin{figure}[H]
@@ -1351,14 +1381,14 @@ Sarebbe possibile inoltre estendere l'interfaccia del servizio aggiungendo come 
 Per creare la richiesta per l'adapter sarebbe sufficiente effettuare un'intersezione fra le colonne a cui l'utente può accedere e le colonne richieste.
 Nell'implementazione della componente in un'architettura reale sarebbe opportuno fornire il supporto alla creazione di query più complesse.
 Inoltre, con l'introduzione di altre tipologie di Database analitici sarà necessario permettere di specificare nella richiesta la rappresentazione dei dati desiderata ed estendere il servizio per consentire la creazione di query non SQL-based. 
-Una volta creata la query questa viene inviata all'Adapter del database analitico; questo ritornerà di dati che verranno inoltrati, in formato JSON o XML all'utente.
+Una volta creata la query, questa viene inviata all'Adapter del database analitico; questo ritornerà di dati che verranno inoltrati, in formato JSON o XML all'utente.
 
 \subsection{Gestore delle politiche}
-Come già precisato nella sezione sulle tecnologie adottate per l'implementazione si è deciso che Open Policy Agent svolgerà il ruolo di gestore delle politiche.
-Viene creato un servizio OPA che, data una richiesta in formato JSON contente le informazioni sull'utente, ritorna un messaggio, sempre in JSON, contenente i risultati della valutazione delle politiche.
+Come già precisato nel paragrafo sulle tecnologie adottate per l'implementazione,  si è deciso che Open Policy Agent svolgerà il ruolo di gestore delle politiche.
+Viene creato un servizio OPA che, data una richiesta in formato JSON contente le informazioni sull'utente, ritorna un messaggio, sempre in formato JSON, contenente i risultati della valutazione delle politiche.
 All'avvio del servizio è necessario specificare la porta, il file con i dati e il file con le politiche scritte in Rego.
 Anche questo servizio viene mediato tramite l'API manager.
-Il lavoro di tesi per quanto riguarda la realizzazione di  questa componente ha comportato la creazione del mediatore tramite API manager, e la scrittura dei file contenti le politiche e i dati.
+Per quanto riguarda la realizzazione di  questa componente il lavoro di tesi ha comportato la creazione del mediatore tramite API manager, e la scrittura dei file contenenti le politiche e i dati.
 Il file con i dati contiene le informazioni necessarie a permettere l'applicazione delle politiche.
 In particolare il file presenta i seguenti campi:
 \begin{itemize}
@@ -1368,10 +1398,10 @@ In particolare il file presenta i seguenti campi:
     \item una mappa che associa a ogni ruolo il tipo di operazione che può eseguire sul database (lettura o scrittura).
 \end{itemize}
 Quest'ultimo campo è stato inserito prima di arrivare all'architettura presentata nel capitolo precedente, e nell'attuale versione nell'implementazione non viene utilizzato.
-In una prima versione dell'architettura si era infatti pensato di permettere agli utenti di effettuare anche operazioni in scrittura sul Data Product e spettava quindi a OPA controllare se gli utenti avesse i permessi necessari.
+In una prima versione dell'architettura si era infatti pensato di permettere agli utenti di effettuare anche operazioni in scrittura sul Data Product e spettava quindi a OPA controllare se l'utente avesse i permessi necessari.
 In seguito si è deciso di limitare l'accesso ai dati analitici solo in lettura; le modifiche a livello di scrittura saranno a opera del gestore degli aggiornamenti, o verranno effettuate direttamente dal Data Product owner sul Database analitico.
 Questo riduce il controllo sul dato ma semplifica l'architettura, migliora le performance e soprattutto aumenta la flessibilità delle operazioni di scrittura.
-Le politiche dichiarate nel file Rego sono state scritte per soddisfare quanto stabilito nel paragrafo \ref{caratteristicheDP}.
+Le politiche dichiarate nel file Rego sono state scritte per soddisfare quanto stabilito nel Paragrafo \ref{caratteristicheDP}.
 La risposta fornita da OPA in seguito a una richiesta presenterà i seguenti campi:
 \begin{itemize}
     \item un campo ``allow'' che contiene un booleano che indica se l'utente può accedere ai dati,
@@ -1389,12 +1419,12 @@ Utilizzando queste informazioni è possibile creare una query SQL che consenta d
 
 \subsection{Adapter per l'accesso al database analitico}
 L'ultima componente implementata per l'architettura è l'adapter per l'accesso al database analitico.
-Il compito dell'adapter è consentire l'accesso al database analitico, senza creare lock-in sulla tecnologia utilizzata.
+Il compito dell'adapter è quello di consentire l'accesso al database analitico, senza creare lock-in sulla tecnologia utilizzata.
 Oltre a questo, data la possibilità di salvare più Data Product nello stesso database, l'adapter dovrebbe garantire una separazione dei loro dati.
 L'adapter realizzato cerca di risolvere questi due problemi.
 Il servizio viene realizzato tramite web API, ed è anch'esso implementato in Java.
-In aggiunta alle dipendenze riportate nella tabella \ref{tab:dependencies} sono state utilizzate le librerie riportate nella tabella \ref{tab:dependencies2}, necessarie per lavorare con PostgreSQL.
-Anche questo servizio viene considerato come servizio ``interno'' e viene esposto utilizzando Wso2 Api Manager.
+In aggiunta alle dipendenze riportate nella Tabella \ref{tab:dependencies}, sono state utilizzate le librerie riportate nella Tabella \ref{tab:dependencies2}, necessarie per lavorare con PostgreSQL.
+Anche questo servizio viene considerato come servizio ``interno'' e viene esposto utilizzando Wso2 API Manager.
 \begin{table}
     \centering
     \begin{tabular}{|c|c|}
@@ -1416,33 +1446,33 @@ Il servizio OPA associato al Database analitico controlla che il Data Product ch
 Per garantire questa proprietà in maniera elementare nel file dei dati utilizzato dal servizio Open Policy Agent, sarà presente un campo che associa al nome di ogni Data Product una tabella del database.
 L'utente, con il ruolo speciale Data Product, dovrà presentare un campo che precisa il nome del Data Product.
 Le politiche del servizio verificano che la tabella associata al nome di quel Data Product sia la stessa contenuta nella richiesta effettuata.
-Si è deciso di continuare a utilizzare OPA perché era una tecnologia già conosciuta e perché, essendo indipendente dal database, può essere riusata anche per altri adapter.
+Si è deciso di continuare a utilizzare OPA perché era una tecnologia già conosciuta e perché, essendo indipendente dal database, essa può essere riusata anche per altri adapter.
 Inoltre il lock-in è meno rischioso, dato che si tratta di una soluzione open-source. 
-Infine, come visto nel paragrafo \ref{opa_opal}, è possibile utilizzare OPAL per supportare l'aggiornamento e la gestione centralizzata delle politiche.
+Infine, come visto nel Paragrafo \ref{opa_opal}, è possibile utilizzare OPAL per supportare l'aggiornamento e la gestione centralizzata delle politiche.
 Nel caso la richiesta sia ritenuta valida si procede poi a effettuare la richiesta al Database e a restituire al mittente i dati richiesti.
 
 \section{Commento dei risultati}\label{commento risultati}
 La parte finale del lavoro ha portato alla creazione degli strumenti per la realizzazione di un Data Product funzionante.
 Il lavoro è essenzialmente un proof of concept e presenta diversi limiti.
-In primo luogo l'implementazione è parziale e non fornisce quindi un'esempio concreto dell'architettura proposta nella sua interezza.
+In primo luogo l'implementazione è parziale e non fornisce quindi un esempio concreto dell'architettura proposta nella sua interezza.
 Sempre a causa della scarsità di tempo si è fatta una ricerca superficiale delle tecnologie da utilizzare e sarebbe stato interessante approfondire le alternative.
 Inoltre, sebbene il Data Product proposto permetta di mostrare un esempio di accesso differenziato ai dati, il tipo di utenti e di richieste sembrano più vicine a quelle effettuate su un sistema operazionale rispetto ad un sistema analitico.
 Dal punto di vista dei requisiti non funzionali sarebbe opportuno curare maggiormente la sicurezza e l'efficienza. 
 Utilizzare un mediatore per ``nascondere'' gli end-point dei servizi interni infatti potrebbe creare problemi su entrambi i fronti; si è deciso di adottare questa pratica sempre a causa dei tempi limitati.
-Un'altro problema importante è nella portabilità e la riproducibilità dell'ambiente. 
+Un altro problema importante riguarda la portabilità e la riproducibilità dell'ambiente. 
 Infatti, sebbene la suite Wso2 sia una tecnologia open source e teoricamente portabile, risulta molto complessa e non sempre ben documentata. 
 Sono sorti per esempio diversi problemi nello spostare i servizi da una macchina Windows a una macchina Linux.
 Per quanto riguarda la gestione delle politiche sarebbe stato interessante provare a definire nel file .Rego una serie di politiche standard, indipendenti dal dominio.
 Ogni Data Product potrebbe poi partire da queste, modificarle se necessario e utilizzare il file contente i dati per differenziasi dagli altri Data Product.
 L'ultima parte su cui si sarebbe voluto dedicare più tempo è il meccanismo di conversione dei risultati dati da OPA a query SQL.
 In un lavoro futuro si potrebbe approfondire la possibilità di creare policy e di conseguenza query più complesse, e provare a estendere il servizio aggiungendo il supporto per la creazione di query non SQL-based.
-Nonostante queste criticità si ritiene che la realizzazione presenti alcuni spunti interessanti su come realizzare un Data Product.
+Nonostante queste criticità, si ritiene che la realizzazione presenti alcuni spunti interessanti su come realizzare un Data Product.
 Il prototipo realizzato è di fatto funzionante, utilizza tecnologie open source e i tempi di sviluppo sono stati contenuti.
 I servizi realizzati sono inoltre indipendenti dal dominio e possono essere utilizzati per realizzare altri Data Product.
 Le operazioni per creare un nuovo Data Product, supponendo che possa memorizzare i dati analitici una tabella SQL, sono le seguenti: 
 \begin{itemize}
     \item creare file di politiche e di dati per OPA relativi al nuovo Data Product,
-    \item creare dei nuovi mediatori per i servizi utilizzando WSO2 API Manager; è sufficiente partire dai mediatori già creati e cambiare gli end-point,
+    \item creare dei nuovi mediatori per i servizi utilizzando WSO2 API Manager (è sufficiente partire dai mediatori già creati e cambiare gli end-point),
     \item sistemare i file di configurazione dei servizi in Java, andando a modificare gli end-point e le credenziali,
     \item creare una nuova tabella nel Database e aggiornare il file dei dati di OPA utilizzato dall'adapter per mediarne l'accesso.
 \end{itemize} 
@@ -1450,15 +1480,15 @@ Il codice realizzato inoltre è relativamente semplice e si ritiene sia facilmen
 Si spera quindi, per quanto riguarda l'accesso differenziato ai dati e la realizzazione di Data Product con uno sforzo contenuto, che l'architettura e l'implementazione proposta possano essere d'aiuto.
 
 \chapter*{Conclusioni}
-In una parte del libro \cite{dehghani_data_2022} viene introdotto il concetto di Data Manifest, un documento che contiene le informazioni, ricavabili dal dominio, che permettono di definire un Data Product.
+In \cite{dehghani_data_2022} viene introdotto il concetto di Data Manifest, un documento che contiene le informazioni, ricavabili dal dominio, che permettono di definire un Data Product.
 Una piattaforma ideale dovrebbe fornire gli strumenti che consentano ai team, operazionali e analitici, di creare e mantenere un Data Manifest e di ottenere un Data Product partendo da questo tipo di artefatto.
 Sebbene infatti i team con responsabilità sui dati posseggano la conoscenza del dominio necessaria per interpretare e presentare i dati, potrebbero non disporre del tempo o delle risorse tecniche per poter creare e gestire un Data Product. 
 La letteratura esistente si focalizza sulle tecnologie e sulla progettazione della piattaforma, mettendo al centro gli strumenti da realizzare per garantire il rispetto dei principi del Data Mesh.
-In questo lavoro si è perseguito un obbiettivo simile, spostando il focus dalla piattaforma in sè e mettendo al centro il concetto di Data Product.
-Nel secondo capitolo si è partiti dagli agenti che interagiscono con sistema, per individuare i requisiti che un Data Product e le componenti esterne ad esso devono garantire.
+In questo lavoro si è perseguito un obbiettivo simile, spostando il focus dalla piattaforma in sé e mettendo al centro il concetto di Data Product.
+Nel secondo capitolo si è partiti dagli agenti che interagiscono con il sistema, per individuare i requisiti che un Data Product e le componenti esterne a esso devono garantire.
 In maniera incrementale sono poi stati proposti diversi servizi, pensati per soddisfare i requisiti vincolando il meno possibile un'eventuale realizzazione degli stessi.
 I servizi così definiti costituiscono gli strumenti della piattaforma.
-Nelle proposte trovate in letteratura alla Self-serve Data Platform veniva semplicemente dato il compito di fornire alcuni strumenti.
+Nelle proposte trovate in letteratura, alla Self-serve Data Platform veniva semplicemente dato il compito di fornire alcuni strumenti.
 Si lasciava poi ai Data Product la libertà e la responsabilità di utilizzarli per creare, per ognuno di essi, un'architettura specifica. 
 Nel primo capitolo si è definito il concetto di piattaforma come ``insieme di strumenti utilizzabili da team indipendenti per velocizzare lo sviluppo e ridurre il carico cognitivo''.
 Si ritiene che vincolare la struttura interna del Data Product possa permettere di raggiungere gli obiettivi di una piattaforma così definita.
@@ -1467,30 +1497,29 @@ Si è quindi progettata una SOA che vincola la realizzazione del Data Product sp
 Nel terzo capitolo, basandosi dall'architettura definita, si è descritta la realizzazione di un prototipo di Data Product.
 L'implementazione del prototipo ha permesso di mostrare la fattibilità di sviluppare alcune delle componenti dell'architettura.
 Sono inoltre stati approfonditi alcuni concetti tra cui l'accesso differenziato al dato.
-Infine ha permesso di mostrare alcune tecnologie open source, documentando come potrebbero essere utilizzate per la creazione di una Data Mesh.
+Infine la costruzione del prototipo ha permesso di mostrare alcune tecnologie open source, documentando come queste potrebbero essere utilizzate per la creazione di una Data Mesh.
 Il prototipo permette, modificando essenzialmente le politiche di accesso e poco altro, di realizzare un nuovo Data Product, minimizzando il tempo di creazione.
 Il prototipo riesce, almeno in parte, a consentire la creazione di un Data Product partendo da un Data Manifest.
-Nonostante questo risultato il lavoro svolto presenta diverse criticità.
+Nonostante questo risultato, il lavoro svolto presenta diverse criticità.
 Le cause principali sono state la scarsità di tempo, la ridotta conoscenza iniziale del settore e la mancanza dell'esperienza necessaria per la realizzazione di architettura software.
 In primo luogo alcuni riscontri ottenuti sull'architettura proposta hanno sottolineato come i vincoli e le caratteristiche di alcune componenti  rimangano troppo astratte, e non siano quindi utili in fase di realizzazione.
 In accordo con \cite{perry_foundations_1992} sarebbe poi stato opportuno fornire diverse viste sull'architettura e, basandosi sugli altri lavori, fornire una descrizione delle tecnologie utilizzabili per l'implementazione.
 Inoltre non sono stati introdotti vincoli sulle modalità di rappresentazione dei dati all'interno dell'organizzazione. 
 Questo potrebbe rendere difficile il processo di aggregazione dei dati provenienti da diversi Data Product, aumentando la difficoltà, i tempi e il carico cognitivo necessario per creare nuovi Data Product.
 A livello di progettazione non sono state considerate nemmeno la robustezza e l'affidabilità del sistema.
-Infine, per semplicità, non sono stati considerati come parte della piattaforma strumenti che facilitassero l'analisi dei dati, contrariamente da quanto indicato in \cite{dehghani_data_2022}.
+Infine, per semplicità, non sono stati considerati come parte della piattaforma strumenti che possano facilitare l'analisi dei dati, contrariamente da quanto indicato in \cite{dehghani_data_2022}.
 Nell'ultimo capitolo viene presentato il prototipo realizzato,
 le cui limitazioni sono state presentate nel paragrafo \ref{commento risultati} e vengono brevemente riassunte qui.
 L'implementazione è stata parziale, e non ha permesso di verificare la fattibilità della realizzazione di tutte le componenti proposte.
 Sono stati utilizzati dati fittizi e in generale il prototipo è stato testato e validato solo in un contesto controllato.
 Infine, alcune componenti nell'attuale implementazione risultano semplici e si potrebbero estendere per soddisfare una maggiore varietà di richieste.
 Tra i possibili sviluppi futuri sarebbe senza dubbio interessante sottoporre la proposta ad aziende enterprise, per raccogliere feedback e cercare di lavorare sui punti più critici e sugli elementi non considerati dall'architettura.
-Sarebbe poi opportuno realizzare un prototipo completo, che comprenda le altre componenti non sviluppate e quindi  testare il tutto creando più Data Product.
-Per verificare la generalità dell'architettura si potrebbe provare ad applicare quanto descritto in un contesto reale, andando a realizzare uno o più Data Product e fornendo gli strumenti e il supporto per la creazione di altri.
+Sarebbe poi opportuno realizzare un prototipo completo, che comprenda le altre componenti non sviluppate e quindi validare il tutto creando più Data Product.
+Per verificare la generalità dell'architettura si potrebbe provare ad applicare quanto descritto in un contesto reale, andando a realizzare uno o più Data Product e fornendo gli strumenti e il supporto per la creazione di altri Data Product.
 A livello di ricerca si potrebbero approfondire i temi di Computational Governance e interoperabilità nella rappresentazione dei dati.
 Per quanto riguarda il primo tema sarebbe interessante estendere il lavoro approfondendo, oltre all'accesso differenziato, il monitoraggio e la gestione dei polisemi.
 A livello di interoperabilità si potrebbe indagare sulla possibilità di creare una formato di rappresentazione dei dati che faciliti i processi di aggregazione ma che sia abbastanza flessibile da consentire ai team di lavorare rimanendo fedeli alla semantica dei dati conservati.
 L'argomento viene trattato in \cite{dehghani_data_2022} ma si ritiene che andrebbe ulteriormente approfondito.
 Infine, si potrebbero documentare e approfondire i processi, in termini di organizzazione aziendale e comunicazione, necessari a rendere possibile l'applicazione dei principi di Data Mesh all'interno di un'enterprise.
-\bibliographystyle{IEEEtranS} 
-\bibliography{bibliography} 
+\printbibliography
 \end{document}
