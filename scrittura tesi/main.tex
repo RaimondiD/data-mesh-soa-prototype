@@ -1,15 +1,21 @@
 \documentclass[12pt]{report}
 \usepackage{csquotes} 
 \usepackage[maxalphanames=1,labelalpha,maxbibnames=99, sorting=anyt, style=ieee,   backend=biber]{biblatex}
+\usepackage[pdfa, colorlinks = false]{hyperref}
 \usepackage{float}
 \usepackage{graphicx} % required for inserting images
+\usepackage[svgnames]{xcolor}
+
 \usepackage{setspace}
 \usepackage{geometry}
 \usepackage{biblatex}
+\usepackage{colorprofiles}
+\usepackage[a-1b]{pdfx}
 \addbibresource{bibliography.bib}
 \usepackage[italian]{babel}
 \geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
 
+\hypersetup{hidelinks} 
 
 
 \begin{document}
@@ -1146,6 +1152,7 @@ Lo scopo del Data Product che si è deciso di sviluppare è presentare a diverse
 Si è deciso di lavorare simulando informazioni di questo tipo perché permettono di approfondire l'utilizzo di politiche per limitare l'accesso ai dati sensibili utilizzando il ruolo degli utenti.
 Basandosi sull'architettura proposta le componenti necessarie per effettuare queste operazioni sono le seguenti: il mediatore, un adapter per l'accesso a un database analitico, il gestore delle politiche, il gestore dell'accesso ai dati analitici, ed eventualmente un ESB per facilitare la comunicazione delle altre componenti.
 Nei paragrafi successivi verranno presentate le tecnologie utilizzate e le caratteristiche del Data Product scelto, e  verrà descritta nel dettaglio l'implementazione delle componenti e la realizzazione del sistema complessivo.
+La repository contente il codice e i file di configurazione necessari per creare il prototipo è disponibile al seguente indirizzo: \url{https://github.com/RaimondiD/data-mesh-soa-use-case}.
 
 \section{Scelta delle tecnologie}
 In questo paragrafo vengono spiegate le tecnologie adottate.
