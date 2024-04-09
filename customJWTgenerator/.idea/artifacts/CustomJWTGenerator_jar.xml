@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="CustomJWTGenerator:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/CustomJWTGenerator_jar</output-path>
-    <root id="archive" name="CustomJWTGenerator.jar">
-      <element id="module-output" name="CustomJWTGenerator" />
-    </root>
-  </artifact>
-</component>

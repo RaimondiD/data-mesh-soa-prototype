@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<esb:EsbDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:esb="http:///org/wso2/integrationstudio/eclipse/gmf/esb">
+  <server type="API">
+    <children xsi:type="esb:SynapseAPI" apiName="medical_care_DP.xml">
+      <resources allowGet="true">
+        <inputConnector/>
+        <outputConnector>
+          <outgoingLink target="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.0/@inputConnector"/>
+        </outputConnector>
+        <outSequenceOutputConnector/>
+        <faultInputConnector/>
+        <container>
+          <sequenceAndEndpointContainer>
+            <mediatorFlow>
+              <children xsi:type="esb:CallMediator" endpointType="REGISRTYKEY">
+                <inputConnector incomingLinks="//@server/@children.0/@resources.0/@outputConnector/@outgoingLink"/>
+                <outputConnector>
+                  <outgoingLink target="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.1/@inputConnector"/>
+                </outputConnector>
+                <endpointOutputConnector>
+                  <outgoingLink target="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.0/@mediatorFlow/@children.0/@inputConnector"/>
+                </endpointOutputConnector>
+                <mediatorFlow>
+                  <children xsi:type="esb:NamedEndpoint" name="OPA_medical_DP">
+                    <reliableMessagingPolicy prettyName="ReliableMessagingPolicy Key" keyName="ReliableMessagingPolicy Key" keyValue="/default/key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                    <securityPolicy prettyName="SecurityPolicy Key" keyName="SecurityPolicy Key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                    <inboundPolicy prettyName="inboundPolicy Key" keyName="inboundPolicy Key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                    <outboundPolicy prettyName="obPolicy Key" keyName="obPolicy Key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                    <inputConnector incomingLinks="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.0/@endpointOutputConnector/@outgoingLink"/>
+                    <dynamicReferenceKey prettyName="Endpoint Expression" propertyName="expression" propertyValue="/default/expression" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                    <staticReferenceKey prettyName="Endpoint Key" keyName="Endpoint Key" keyValue="OPA_medical_DP" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                  </children>
+                </mediatorFlow>
+                <endpointRegistrykey keyValue="OPA_medical_DP" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                <sourceXPath prettyName="Endpoint XPath" propertyName="expression" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+              </children>
+              <children xsi:type="esb:PropertyMediator" valueType="EXPRESSION" newPropertyName="policyDP">
+                <inputConnector incomingLinks="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.0/@outputConnector/@outgoingLink"/>
+                <outputConnector>
+                  <outgoingLink target="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@inputConnector"/>
+                </outputConnector>
+                <valueExpression propertyValue="json-eval(accepted)" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078" supportJsonPaths="true"/>
+              </children>
+              <children xsi:type="esb:SwitchMediator">
+                <sourceXpath propertyValue="get-property(policyDP)" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                <caseBranches caseRegex="true">
+                  <outgoingLink target="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.0/@inputConnector"/>
+                </caseBranches>
+                <defaultBranch>
+                  <outgoingLink target="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchDefaultParentContainer/@switchDefaultContainer/@mediatorFlow/@children.0/@inputConnector"/>
+                </defaultBranch>
+                <inputConnector incomingLinks="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.1/@outputConnector/@outgoingLink"/>
+                <outputConnector/>
+                <switchContainer>
+                  <switchCaseParentContainer>
+                    <switchCaseContainer>
+                      <mediatorFlow>
+                        <children xsi:type="esb:CallMediator" endpointType="REGISRTYKEY">
+                          <inputConnector incomingLinks="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@caseBranches.0/@outgoingLink"/>
+                          <outputConnector>
+                            <outgoingLink target="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.1/@inputConnector"/>
+                          </outputConnector>
+                          <endpointOutputConnector>
+                            <outgoingLink target="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.0/@mediatorFlow/@children.0/@inputConnector"/>
+                          </endpointOutputConnector>
+                          <mediatorFlow>
+                            <children xsi:type="esb:NamedEndpoint" name="DP_request_creator">
+                              <reliableMessagingPolicy prettyName="ReliableMessagingPolicy Key" keyName="ReliableMessagingPolicy Key" keyValue="/default/key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                              <securityPolicy prettyName="SecurityPolicy Key" keyName="SecurityPolicy Key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                              <inboundPolicy prettyName="inboundPolicy Key" keyName="inboundPolicy Key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                              <outboundPolicy prettyName="obPolicy Key" keyName="obPolicy Key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                              <inputConnector incomingLinks="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.0/@endpointOutputConnector/@outgoingLink"/>
+                              <dynamicReferenceKey prettyName="Endpoint Expression" propertyName="expression" propertyValue="/default/expression" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                              <staticReferenceKey prettyName="Endpoint Key" keyName="Endpoint Key" keyValue="DP_request_creator" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                            </children>
+                          </mediatorFlow>
+                          <endpointRegistrykey keyValue="DP_request_creator" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                          <sourceXPath prettyName="Endpoint XPath" propertyName="expression" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                        </children>
+                        <children xsi:type="esb:CallMediator" endpointType="REGISRTYKEY">
+                          <inputConnector incomingLinks="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.0/@outputConnector/@outgoingLink"/>
+                          <outputConnector>
+                            <outgoingLink target="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.2/@inputConnector"/>
+                          </outputConnector>
+                          <endpointOutputConnector>
+                            <outgoingLink target="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.1/@mediatorFlow/@children.0/@inputConnector"/>
+                          </endpointOutputConnector>
+                          <mediatorFlow>
+                            <children xsi:type="esb:NamedEndpoint" name="OPA_DB_Adapter">
+                              <reliableMessagingPolicy prettyName="ReliableMessagingPolicy Key" keyName="ReliableMessagingPolicy Key" keyValue="/default/key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                              <securityPolicy prettyName="SecurityPolicy Key" keyName="SecurityPolicy Key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                              <inboundPolicy prettyName="inboundPolicy Key" keyName="inboundPolicy Key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                              <outboundPolicy prettyName="obPolicy Key" keyName="obPolicy Key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                              <inputConnector incomingLinks="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.1/@endpointOutputConnector/@outgoingLink"/>
+                              <dynamicReferenceKey prettyName="Endpoint Expression" propertyName="expression" propertyValue="/default/expression" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                              <staticReferenceKey prettyName="Endpoint Key" keyName="Endpoint Key" keyValue="OPA_DB_Adapter" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                            </children>
+                          </mediatorFlow>
+                          <endpointRegistrykey keyValue="OPA_DB_Adapter" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                          <sourceXPath prettyName="Endpoint XPath" propertyName="expression" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                        </children>
+                        <children xsi:type="esb:PropertyMediator" valueType="EXPRESSION" newPropertyName="DBpolocies">
+                          <inputConnector incomingLinks="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.1/@outputConnector/@outgoingLink"/>
+                          <outputConnector>
+                            <outgoingLink target="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.3/@inputConnector"/>
+                          </outputConnector>
+                          <valueExpression propertyValue="json-eval($.accepted)" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078" supportJsonPaths="true"/>
+                        </children>
+                        <children xsi:type="esb:SwitchMediator">
+                          <sourceXpath propertyValue="get-property(DPpolicies)" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                          <caseBranches caseRegex="true">
+                            <outgoingLink target="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.3/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.0/@inputConnector"/>
+                          </caseBranches>
+                          <defaultBranch>
+                            <outgoingLink target="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.3/@switchContainer/@switchDefaultParentContainer/@switchDefaultContainer/@mediatorFlow/@children.0/@inputConnector"/>
+                          </defaultBranch>
+                          <inputConnector incomingLinks="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.2/@outputConnector/@outgoingLink"/>
+                          <outputConnector/>
+                          <switchContainer>
+                            <switchCaseParentContainer>
+                              <switchCaseContainer>
+                                <mediatorFlow>
+                                  <children xsi:type="esb:CallMediator" endpointType="REGISRTYKEY">
+                                    <inputConnector incomingLinks="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.3/@caseBranches.0/@outgoingLink"/>
+                                    <outputConnector/>
+                                    <endpointOutputConnector>
+                                      <outgoingLink target="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.3/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.0/@mediatorFlow/@children.0/@inputConnector"/>
+                                    </endpointOutputConnector>
+                                    <mediatorFlow>
+                                      <children xsi:type="esb:NamedEndpoint" name="DB_adapter">
+                                        <reliableMessagingPolicy prettyName="ReliableMessagingPolicy Key" keyName="ReliableMessagingPolicy Key" keyValue="/default/key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                                        <securityPolicy prettyName="SecurityPolicy Key" keyName="SecurityPolicy Key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                                        <inboundPolicy prettyName="inboundPolicy Key" keyName="inboundPolicy Key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                                        <outboundPolicy prettyName="obPolicy Key" keyName="obPolicy Key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                                        <inputConnector incomingLinks="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.3/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.0/@endpointOutputConnector/@outgoingLink"/>
+                                        <dynamicReferenceKey prettyName="Endpoint Expression" propertyName="expression" propertyValue="/default/expression" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                                        <staticReferenceKey prettyName="Endpoint Key" keyName="Endpoint Key" keyValue="DB_adapter" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                                      </children>
+                                    </mediatorFlow>
+                                    <endpointRegistrykey keyValue="DB_adapter" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                                    <sourceXPath prettyName="Endpoint XPath" propertyName="expression" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                                  </children>
+                                </mediatorFlow>
+                              </switchCaseContainer>
+                            </switchCaseParentContainer>
+                            <switchDefaultParentContainer>
+                              <switchDefaultContainer>
+                                <mediatorFlow>
+                                  <children xsi:type="esb:PayloadFactoryMediator" payload="&lt;inline/>error, this DP dosen't have enough permission to do this request. contact the DP owner or the governance team for more info." mediaType="text">
+                                    <payloadKey prettyName="Sequence Key" keyName="Sequence Key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                                    <inputConnector incomingLinks="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.3/@defaultBranch/@outgoingLink"/>
+                                    <outputConnector>
+                                      <outgoingLink target="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.3/@switchContainer/@switchDefaultParentContainer/@switchDefaultContainer/@mediatorFlow/@children.1/@inputConnector"/>
+                                    </outputConnector>
+                                  </children>
+                                  <children xsi:type="esb:RespondMediator">
+                                    <inputConnector incomingLinks="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchCaseParentContainer/@switchCaseContainer.0/@mediatorFlow/@children.3/@switchContainer/@switchDefaultParentContainer/@switchDefaultContainer/@mediatorFlow/@children.0/@outputConnector/@outgoingLink"/>
+                                    <outputConnector/>
+                                  </children>
+                                </mediatorFlow>
+                              </switchDefaultContainer>
+                            </switchDefaultParentContainer>
+                          </switchContainer>
+                        </children>
+                      </mediatorFlow>
+                    </switchCaseContainer>
+                  </switchCaseParentContainer>
+                  <switchDefaultParentContainer>
+                    <switchDefaultContainer>
+                      <mediatorFlow>
+                        <children xsi:type="esb:PayloadFactoryMediator" description="user can't access" payload="&lt;inline/>user can't access this resource, contact DP product owner for more info&#xD;&#xA;" mediaType="text">
+                          <payloadKey prettyName="Sequence Key" keyName="Sequence Key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+                          <inputConnector incomingLinks="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@defaultBranch/@outgoingLink"/>
+                          <outputConnector>
+                            <outgoingLink target="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchDefaultParentContainer/@switchDefaultContainer/@mediatorFlow/@children.1/@inputConnector"/>
+                          </outputConnector>
+                        </children>
+                        <children xsi:type="esb:RespondMediator">
+                          <inputConnector incomingLinks="//@server/@children.0/@resources.0/@container/@sequenceAndEndpointContainer/@mediatorFlow/@children.2/@switchContainer/@switchDefaultParentContainer/@switchDefaultContainer/@mediatorFlow/@children.0/@outputConnector/@outgoingLink"/>
+                          <outputConnector/>
+                        </children>
+                      </mediatorFlow>
+                    </switchDefaultContainer>
+                  </switchDefaultParentContainer>
+                </switchContainer>
+              </children>
+            </mediatorFlow>
+          </sequenceAndEndpointContainer>
+          <faultContainer>
+            <mediatorFlow/>
+          </faultContainer>
+        </container>
+        <inSequenceKey prettyName="In Sequence Reference" keyName="key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+        <outSequenceKey prettyName="Out Sequence Reference" keyName="key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+        <faultSequenceKey prettyName="Fault Sequence Reference" keyName="key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F400000000000007708000000100000000078"/>
+      </resources>
+    </children>
+  </server>
+</esb:EsbDiagram>
